@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ar. Jefrey Bolhayon Project Portfolio</title>
+    <style>
+        html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        /* PORTFOLIO GRID SECTION */
+        .portfolio {
+            padding: 150px 50px 100px;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-img-wrapper {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.03);
+        }
+
+        /* DESCRIPTION CARD STYLING */
+        .project-text-wrapper {
+            width: 100%;
+            height: 600px;
+            padding: 40px;
+            background-color: #141414;
+            border: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-text-wrapper p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #aaa;
+            letter-spacing: 0.5px;
+            text-align: justify;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 80px 50px;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            color: #444;
+            font-size: 14px;
+        }
+
+        /* LOGO + BACK BUTTON GROUP */
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .back-home .arrow {
+            font-size: 18px;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #fff;
+        }
+
+        .back-home:hover .arrow {
+            transform: translateX(-5px);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 968px) {
+            nav { padding: 20px; }
+            .grid { grid-template-columns: 1fr; gap: 30px; }
+            .project-img-wrapper, .project-text-wrapper { height: auto; min-height: 400px; }
+            .portfolio { padding: 100px 20px 50px; }
+            footer { padding: 40px 20px; flex-direction: column; gap: 20px; }
+            .back-home { font-size: 11px; }
+            .back-home .arrow { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-group">
+            <div class="logo">Ar. Jefrey Bolhayon, UAP</div>
+            <a href="index.html" class="back-home" onclick="history.back(); return false;" aria-label="Back to previous page">
+                <span class="arrow">←</span>
+                <span>Back</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Back to Homepage</a></li>
+        </ul>
+    </nav>
+
+    <section class="portfolio" id="work">
+        <div class="section-header">
+            <h2>Mr & Mrs Sira Extension Residence</h2>
+        </div>
+
+        <div class="grid">
+            <!-- 1st Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_01.jpg" alt="Exterior View 1">
+                </div>
+            </div>
+
+            <!-- Description Text Block -->
+            <div class="project-card">
+                <div class="project-text-wrapper">
+                    <p>This house extension follows a modern, minimalist design concept that emphasizes clean lines, functional spaces, and visual openness. The exterior features a balanced combination of neutral tones, flat rooflines, and vertical elements that add depth and character, while the gated frontage ensures privacy and security. Inside, the extension creates a seamless flow between living areas, highlighted by warm lighting, built-in storage, and contemporary finishes such as wood accents and marble textures.  full glass windows and open layouts enhance natural light and ventilation, resulting in a comfortable, stylish, and highly livable environment tailored for modern family living. Additionally, the design thoughtfully adapts to its surroundings by aligning with the architectural language of neighboring homes—using similar proportions, materials, and color palettes—to maintain visual harmony within the community. This approach reinforces a cohesive streetscape while still allowing the house to express a refined, contemporary identity.</p>
+                </div>
+            </div>
+
+            <!-- 2nd Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_08.jpg" alt="Interior 1">
+                </div>
+            </div>
+
+            <!-- 3rd Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_09.jpg" alt="Interior 2">
+                </div>
+            </div>
+
+            <!-- 4th Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_10.jpg" alt="Interior 3">
+                </div>
+            </div>
+
+            <!-- 5th Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_11.jpg" alt="Interior 4">
+                </div>
+            </div>
+
+            <!-- 6th Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_14.jpg" alt="Interior 5">
+                </div>
+            </div>
+
+            <!-- 7th Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_15.jpg" alt="Interior 6">
+                </div>
+            </div>
+
+            <!-- 8th Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_16.jpg" alt="Interior 7">
+                </div>
+            </div>
+
+            <!-- 9th Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_19_R.jpg" alt="Interior 8">
+                </div>
+            </div>
+
+            <!-- 10th Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_21_R.jpg" alt="Interior 9">
+                </div>
+            </div>
+
+            <!-- 11th Image -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="images/sira/compressed_17.jpg" alt="Interior 10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>&copy; 2016-2026 Project Portfolio. All rights reserved.</div>
+        <div>
+            <p>Connect: <a href="mailto:ar.jefreybolhayon@gmail.com" style="color: #888; text-decoration: none;">ar.jefreybolhayon@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal project cards on page load.
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.project-card').forEach(function (card) {
+                card.classList.add('visible');
+            });
+        });
+    </script>
+</body>
+</html>
