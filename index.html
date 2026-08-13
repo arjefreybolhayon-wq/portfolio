@@ -130,6 +130,13 @@
             gap: 28px;
         }
 
+        .profile-column {
+            flex: 0 0 220px;
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+        }
+
         .hero-text-content {
             flex: 1;
             min-width: 0;
@@ -145,8 +152,7 @@
         }
 
         .owner-portrait {
-            flex: 0 0 220px;
-            width: 220px;
+            width: 100%;
             height: 100%;
             display: block;
             object-fit: cover;
@@ -158,6 +164,19 @@
 
         .owner-portrait:hover {
             filter: grayscale(0%);
+        }
+
+        /* PROFILE QUOTE STYLING */
+        .profile-quote {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #b0b0b0;
+            letter-spacing: 0.3px;
         }
 
         .hero-title p {
@@ -448,7 +467,7 @@
                 font-size: 7vw;
             }
 
-            .owner-portrait {
+            .profile-column {
                 flex-basis: 140px;
                 width: 140px;
             }
@@ -518,10 +537,13 @@
                 flex-direction: column;
             }
 
-            .owner-portrait {
+            .profile-column {
                 width: 100%;
-                height: 280px;
                 flex-basis: auto;
+            }
+
+            .owner-portrait {
+                height: 280px;
             }
 
             .skills-grid {
@@ -558,7 +580,12 @@
     <section class="hero" id="about">
         <div class="hero-title">
             <div class="hero-layout-flex">
-                <img src="profile/My picture.png" alt="Ar. Jefrey Bolhayon" class="owner-portrait">
+                <div class="profile-column">
+                    <img src="profile/My picture.png" alt="Ar. Jefrey Bolhayon" class="owner-portrait">
+                    <blockquote class="profile-quote">
+                        &ldquo;Design is not simply about how a space looks, but how it makes people feel, move, live, and connect.&rdquo;
+                    </blockquote>
+                </div>
                 
                 <div class="hero-text-content">
                     <h1>
