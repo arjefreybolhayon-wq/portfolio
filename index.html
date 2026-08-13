@@ -121,30 +121,36 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 10;
-            width: min(550px, 40vw);
+            width: min(600px, 45vw);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .hero-header-flex {
+        .hero-layout-flex {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 28px;
-            margin-bottom: 20px;
+        }
+
+        .hero-text-content {
+            flex: 1;
+            min-width: 0;
         }
 
         .hero-title h1 {
-            flex: 1;
-            min-width: 0;
-            font-size: clamp(42px, 4.5vw, 72px);
-            line-height: 0.9;
+            font-size: clamp(38px, 4vw, 68px);
+            line-height: 0.95;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -2px;
+            margin-bottom: 20px;
         }
 
         .owner-portrait {
-            flex: 0 0 150px;
-            width: 150px;
-            height: 180px;
+            flex: 0 0 220px;
+            width: 220px;
+            height: 270px;
             display: block;
             object-fit: cover;
             object-position: center top;
@@ -158,18 +164,22 @@
         }
 
         .hero-title p {
-            margin-top: 18px;
-            font-size: 16px;
+            font-size: 15px;
             color: #cccccc;
             letter-spacing: 0.3px;
             line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .hero-title p:last-child {
+            margin-bottom: 0;
         }
 
         .hero-video-container {
             position: absolute;
             right: 0;
             top: 0;
-            width: 55%;
+            width: 50%;
             height: 100%;
             overflow: hidden;
         }
@@ -433,19 +443,18 @@
                 max-width: 100%;
             }
 
-            .hero-title h1 {
-                font-size: 8vw;
+            .hero-layout-flex {
+                gap: 20px;
             }
 
-            .hero-header-flex {
-                gap: 20px;
-                align-items: center;
+            .hero-title h1 {
+                font-size: 7vw;
             }
 
             .owner-portrait {
-                flex-basis: 90px;
-                width: 90px;
-                height: 110px;
+                flex-basis: 130px;
+                width: 130px;
+                height: 160px;
             }
 
             .hero-video-container {
@@ -509,6 +518,16 @@
                 letter-spacing: 0.5px;
             }
 
+            .hero-layout-flex {
+                flex-direction: column;
+            }
+
+            .owner-portrait {
+                width: 150px;
+                height: 180px;
+                flex-basis: auto;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -542,21 +561,24 @@
     ========================== -->
     <section class="hero" id="about">
         <div class="hero-title">
-            <div class="hero-header-flex">
+            <div class="hero-layout-flex">
                 <img src="profile/My picture.png" alt="Ar. Jefrey Bolhayon" class="owner-portrait">
-                <h1>
-                    PROJECT<br>
-                    PORTFOLIO.
-                </h1>
+                
+                <div class="hero-text-content">
+                    <h1>
+                        PROJECT<br>
+                        PORTFOLIO.
+                    </h1>
+
+                    <p>
+                        A Licensed Architect with over a decade of comprehensive experience delivering high-impact Commercial, Residential, and Interior Fit-out projects. I specialize in managing the complete architectural lifecycle—seamlessly integrating Conceptual Design, Technical Construction, and Project Management to build refined spaces that combine structural utility with bold aesthetics.
+                    </p>
+
+                    <p>
+                        Driven by a commitment to sustainable and human-centric design, I approach each build with precision, creative vision, and intent. My focus centers on balancing form and function through effective spatial planning, innovative architectural solutions, and cutting-edge digital visualization technologies.
+                    </p>
+                </div>
             </div>
-
-            <p>
-                A Licensed Architect with over a decade of comprehensive experience delivering high-impact Commercial, Residential, and Interior Fit-out projects. I specialize in managing the complete architectural lifecycle—seamlessly integrating Conceptual Design, Technical Construction, and Project Management to build refined spaces that combine structural utility with bold aesthetics.
-            </p>
-
-            <p>
-                Driven by a commitment to sustainable and human-centric design, I approach each build with precision, creative vision, and intent. My focus centers on balancing form and function through effective spatial planning, innovative architectural solutions, and cutting-edge digital visualization technologies.
-            </p>
         </div>
 
         <div class="hero-video-container">
