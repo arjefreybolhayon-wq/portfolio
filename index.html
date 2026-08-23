@@ -302,21 +302,19 @@
         }
 
         .thesis-project-card {
-            width: calc(100vw - 50px);
+            width: 100%;
             max-width: none;
         }
 
         .thesis-project-card .project-img-wrapper {
             width: 100%;
-            height: auto;
-            min-height: 600px;
+            height: 600px;
             overflow: hidden;
         }
 
         .thesis-project-card .project-img-wrapper img {
             width: 100%;
-            height: auto;
-            min-height: 600px;
+            height: 100%;
             display: block;
             object-fit: cover;
             object-position: center;
@@ -327,16 +325,14 @@
                 width: 100%;
             }
 
-            .thesis-project-card .project-img-wrapper,
-            .thesis-project-card .project-img-wrapper img {
-                min-height: 400px;
+            .thesis-project-card .project-img-wrapper {
+                height: 400px;
             }
         }
 
         @media (max-width: 520px) {
-            .thesis-project-card .project-img-wrapper,
-            .thesis-project-card .project-img-wrapper img {
-                min-height: 280px;
+            .thesis-project-card .project-img-wrapper {
+                height: 280px;
             }
         }
 
