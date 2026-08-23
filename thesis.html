@@ -1,26 +1,22 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Ar. Jefrey Bolhayon Project Portfolio</title>
 
     <style>
 
-        /* =====================================================
-           RESET & BASE
-        ===================================================== */
+        /* =========================
+           RESET & BASE STYLES
+        ========================= */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
@@ -30,15 +26,16 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            NAVIGATION
-        ===================================================== */
+        ========================= */
 
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+
             padding: 30px 50px;
 
             display: flex;
@@ -49,8 +46,7 @@
 
             background: linear-gradient(
                 to bottom,
-                rgba(10, 10, 10, 0.9),
-                rgba(10, 10, 10, 0.35),
+                rgba(10,10,10,0.85),
                 transparent
             );
         }
@@ -77,12 +73,10 @@
         .nav-links a {
             color: #888;
             text-decoration: none;
-
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
-
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
@@ -90,16 +84,14 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            BACK BUTTON
-        ===================================================== */
+        ========================= */
 
         .back-home {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-
-            width: fit-content;
 
             color: #888;
             text-decoration: none;
@@ -114,7 +106,6 @@
         .back-home .arrow {
             font-size: 18px;
             line-height: 1;
-
             transition: transform 0.3s ease;
         }
 
@@ -127,13 +118,13 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            HERO SECTION
-        ===================================================== */
+        ========================= */
 
         .hero {
-            min-height: 100vh;
             height: 100vh;
+            min-height: 700px;
 
             display: flex;
             align-items: center;
@@ -144,22 +135,21 @@
         }
 
 
-        /* =====================================================
-           HERO LEFT CONTENT
-        ===================================================== */
+        /* =========================
+           HERO TITLE / LIGTAS IMAGE
+        ========================= */
 
         .hero-title {
             position: relative;
-
             z-index: 10;
 
             width: 45%;
-            max-width: 720px;
+            max-width: 700px;
 
             margin-left: 50px;
             margin-top: 50px;
 
-            padding-right: 40px;
+            padding-right: 35px;
 
             display: flex;
             flex-direction: column;
@@ -167,15 +157,13 @@
         }
 
 
-        /* =====================================================
-           LIGTAS IMAGE TITLE
-        ===================================================== */
+        /* L.I.G.T.A.S. LOGO + TITLE IMAGE */
 
         .ligtas-title-image {
             display: block;
 
             width: 100%;
-            max-width: 690px;
+            max-width: 680px;
 
             height: auto;
 
@@ -185,9 +173,9 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            PROJECT DESCRIPTION
-        ===================================================== */
+        ========================= */
 
         .hero-title p {
             margin-top: 0;
@@ -225,12 +213,9 @@
         }
 
 
-        /* =====================================================
-           HERO VIDEO
-           
-           IMPORTANT:
-           video/project.mp4 IS NOT CHANGED
-        ===================================================== */
+        /* =========================
+           VIDEO — DO NOT CHANGE
+        ========================= */
 
         .hero-video-container {
             position: absolute;
@@ -245,7 +230,7 @@
 
             z-index: 1;
 
-            background-color: #111;
+            background: #111;
         }
 
         .hero-video {
@@ -254,7 +239,7 @@
 
             object-fit: cover;
 
-            /* Keep video normal/full color */
+            /* Original video remains untouched */
             filter: none;
 
             transition: transform 0.8s ease;
@@ -265,46 +250,31 @@
         }
 
 
-        /* =====================================================
-           VIDEO EDGE BLEND
-           
-           This does NOT modify the video itself.
-        ===================================================== */
+        /* =========================
+           SCROLL + WALKTHROUGH
+        ========================= */
 
-        .hero-video-container::before {
-            content: "";
-
+        .scroll-area {
             position: absolute;
 
-            left: 0;
-            top: 0;
-
-            width: 100px;
-            height: 100%;
-
-            z-index: 2;
-
-            pointer-events: none;
-
-            background: linear-gradient(
-                to right,
-                #0a0a0a,
-                rgba(10, 10, 10, 0)
-            );
-        }
-
-
-        /* =====================================================
-           SCROLL INDICATOR
-        ===================================================== */
-
-        .scroll-down {
-            position: absolute;
-
-            bottom: 40px;
             left: 50px;
+            bottom: 35px;
 
             z-index: 20;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            gap: 14px;
+        }
+
+        .scroll-down {
+            position: relative;
+
+            left: auto;
+            bottom: auto;
 
             font-size: 12px;
 
@@ -316,15 +286,61 @@
         }
 
 
-        /* =====================================================
+        /* =========================
+           YOUTUBE WALKTHROUGH BUTTON
+        ========================= */
+
+        .walkthrough-link {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #888;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            border: 1px solid #333;
+
+            padding: 10px 16px;
+
+            transition:
+                color 0.3s ease,
+                border-color 0.3s ease,
+                background-color 0.3s ease;
+        }
+
+        .play-icon {
+            font-size: 10px;
+
+            color: #aaa;
+        }
+
+        .walkthrough-link:hover {
+            color: #fff;
+
+            border-color: #777;
+
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .walkthrough-link:hover .play-icon {
+            color: #fff;
+        }
+
+
+        /* =========================
            PORTFOLIO
-        ===================================================== */
+        ========================= */
 
         .portfolio {
-            position: relative;
-
-            z-index: 5;
-
             padding: 100px 50px;
 
             background-color: #0a0a0a;
@@ -345,9 +361,9 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            PROJECT GRID
-        ===================================================== */
+        ========================= */
 
         .grid {
             display: grid;
@@ -356,11 +372,6 @@
 
             gap: 50px;
         }
-
-
-        /* =====================================================
-           PROJECT CARD
-        ===================================================== */
 
         .project-card {
             position: relative;
@@ -383,9 +394,9 @@
         }
 
 
-        /* =====================================================
-           PROJECT IMAGE
-        ===================================================== */
+        /* =========================
+           PROJECT IMAGES
+        ========================= */
 
         .project-img-wrapper {
             width: 100%;
@@ -421,9 +432,9 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            PROJECT INFORMATION
-        ===================================================== */
+        ========================= */
 
         .project-info {
             margin-top: 20px;
@@ -433,8 +444,6 @@
             justify-content: space-between;
 
             align-items: baseline;
-
-            gap: 20px;
         }
 
         .project-title {
@@ -454,9 +463,9 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            FOOTER
-        ===================================================== */
+        ========================= */
 
         footer {
             padding: 80px 50px;
@@ -472,75 +481,54 @@
             font-size: 14px;
         }
 
-        footer a {
-            transition: color 0.3s ease;
-        }
 
-        footer a:hover {
-            color: #fff !important;
-        }
-
-
-        /* =====================================================
-           TABLET
-        ===================================================== */
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
 
         @media (max-width: 1100px) {
-
-            nav {
-                padding: 25px 35px;
-            }
 
             .hero-title {
                 width: 46%;
 
                 margin-left: 35px;
 
-                padding-right: 30px;
+                padding-right: 25px;
             }
 
             .ligtas-title-image {
                 max-width: 620px;
             }
 
-            .hero-title p {
-                font-size: 13px;
-            }
-
             .hero-video-container {
                 width: 54%;
             }
 
-            .scroll-down {
+            .scroll-area {
                 left: 35px;
             }
         }
 
 
-        /* =====================================================
-           MOBILE / TABLET
-        ===================================================== */
+        /* =========================
+           TABLET / MOBILE
+        ========================= */
 
         @media (max-width: 968px) {
 
             nav {
-                position: absolute;
-
                 padding: 20px;
-            }
-
-            .logo {
-                font-size: 17px;
-
-                letter-spacing: 2px;
             }
 
             .nav-links {
                 display: none;
             }
 
+            .logo {
+                font-size: 17px;
+                letter-spacing: 2px;
+            }
 
-            /* HERO */
 
             .hero {
                 height: auto;
@@ -553,17 +541,13 @@
 
                 justify-content: flex-start;
 
-                padding-top: 120px;
+                padding-top: 125px;
 
                 overflow: visible;
             }
 
 
-            /* HERO TITLE */
-
             .hero-title {
-                position: relative;
-
                 width: 100%;
 
                 max-width: none;
@@ -576,8 +560,6 @@
             }
 
 
-            /* LIGTAS IMAGE */
-
             .ligtas-title-image {
                 width: 100%;
 
@@ -587,22 +569,14 @@
             }
 
 
-            /* DESCRIPTION */
-
             .hero-title p {
-                max-width: 100%;
-
                 max-height: none;
 
                 overflow: visible;
 
                 padding-right: 0;
-
-                font-size: 14px;
             }
 
-
-            /* VIDEO */
 
             .hero-video-container {
                 position: relative;
@@ -616,14 +590,8 @@
                 margin-top: 45px;
             }
 
-            .hero-video-container::before {
-                display: none;
-            }
 
-
-            /* SCROLL */
-
-            .scroll-down {
+            .scroll-area {
                 position: relative;
 
                 left: auto;
@@ -632,50 +600,26 @@
 
                 margin: 25px 20px;
 
-                order: 3;
+                align-items: flex-start;
             }
 
-
-            /* PORTFOLIO */
-
-            .portfolio {
-                padding: 60px 20px;
-            }
-
-            .section-header {
-                margin-bottom: 45px;
-            }
-
-            .section-header h2 {
-                font-size: 27px;
-            }
-
-
-            /* PROJECT GRID */
 
             .grid {
                 grid-template-columns: 1fr;
 
-                gap: 40px;
+                gap: 30px;
             }
+
 
             .project-img-wrapper {
                 height: 400px;
             }
 
 
-            /* PROJECT INFO */
-
-            .project-info {
-                flex-direction: column;
-
-                align-items: flex-start;
-
-                gap: 8px;
+            .portfolio {
+                padding: 50px 20px;
             }
 
-
-            /* FOOTER */
 
             footer {
                 padding: 40px 20px;
@@ -687,19 +631,11 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            SMALL MOBILE
-        ===================================================== */
+        ========================= */
 
         @media (max-width: 600px) {
-
-            .hero {
-                padding-top: 110px;
-            }
-
-            .logo {
-                font-size: 15px;
-            }
 
             .hero-title {
                 padding: 0 15px;
@@ -711,8 +647,6 @@
 
             .hero-title p {
                 font-size: 13px;
-
-                line-height: 1.65;
             }
 
             .hero-video-container {
@@ -721,16 +655,18 @@
                 min-height: 280px;
             }
 
+            .scroll-area {
+                margin-left: 15px;
+            }
+
+            .walkthrough-link {
+                font-size: 11px;
+
+                padding: 9px 13px;
+            }
+
             .project-img-wrapper {
                 height: 330px;
-            }
-
-            .project-title {
-                font-size: 17px;
-            }
-
-            .project-category {
-                font-size: 12px;
             }
         }
 
@@ -741,9 +677,9 @@
 <body>
 
 
-    <!-- =====================================================
+    <!-- =========================
          NAVIGATION
-    ===================================================== -->
+    ========================= -->
 
     <nav>
 
@@ -780,40 +716,32 @@
 
 
 
-    <!-- =====================================================
+    <!-- =========================
          HERO
-    ===================================================== -->
+    ========================= -->
 
     <section class="hero">
 
 
-        <!-- =================================================
-             LIGTAS TITLE + DESCRIPTION
-        ================================================= -->
+        <!-- =========================
+             LIGTAS TITLE + TEXT
+        ========================= -->
 
         <div class="hero-title">
 
-
             <!--
-                ATTACHED LIGTAS TITLE IMAGE
-
-                Keep this image in the same folder
-                as this HTML file.
-
-                File:
-                LOGO & TITLE_03.png
+                PLACE LOGO & TITLE_03.png
+                IN THE SAME FOLDER AS THIS HTML FILE
             -->
 
             <img
-                src="architectural thesis/LOGO & TITLE_03.png"
+                src="LOGO & TITLE_03.png"
                 alt="L.I.G.T.A.S. Binangonan Complex Center"
                 class="ligtas-title-image"
             >
 
 
-            <!-- =================================================
-                 ORIGINAL TEXT — KEPT
-            ================================================= -->
+            <!-- ORIGINAL TEXT — UNCHANGED -->
 
             <p>
                 The L.I.G.T.A.S. Complex Center (Law Intervention Group Tactic Action Surveillance) is envisioned as an integrated disaster response and management facility, similar in function to Valenzuela City’s ALERT Center, Cagayan de Oro City’s ORO Central, and Pasig City’s RED Center. These facilities are designed to provide local government units (LGUs) with comprehensive support in coordination with the National Disaster Risk Reduction and Management Council (NDRRMC) and its regional divisions. The L.I.G.T.A.S. Complex Center is proposed as a new-generation disaster response facility capable of responding to emergencies, accommodating evacuees, conducting rescue operations, and providing various training facilities for natural-hazard preparedness and response.
@@ -829,13 +757,10 @@
 
 
 
-        <!-- =====================================================
-             VIDEO
-
-             DO NOT CHANGE THIS SECTION.
-             Your original video remains:
-             video/project.mp4
-        ===================================================== -->
+        <!-- =========================
+             ORIGINAL VIDEO
+             DO NOT CHANGE
+        ========================= -->
 
         <div class="hero-video-container">
 
@@ -860,19 +785,48 @@
 
 
 
-        <!-- SCROLL INDICATOR -->
+        <!-- =========================
+             SCROLL + YOUTUBE
+        ========================= -->
 
-        <div class="scroll-down">
-            ↓ Scroll to explore
+        <div class="scroll-area">
+
+            <div class="scroll-down">
+                ↓ Scroll to explore
+            </div>
+
+
+            <!--
+                REPLACE YOUR_VIDEO_ID
+                WITH YOUR ACTUAL YOUTUBE VIDEO ID
+            -->
+
+            <a
+                href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="walkthrough-link"
+            >
+
+                <span class="play-icon">
+                    ▶
+                </span>
+
+                <span>
+                    Watch Walkthrough
+                </span>
+
+            </a>
+
         </div>
 
     </section>
 
 
 
-    <!-- =====================================================
+    <!-- =========================
          SELECTED PROJECTS
-    ===================================================== -->
+    ========================= -->
 
     <section
         class="portfolio"
@@ -904,7 +858,6 @@
 
                 </div>
 
-
                 <div class="project-info">
 
                     <div class="project-title">
@@ -933,7 +886,6 @@
                     >
 
                 </div>
-
 
                 <div class="project-info">
 
@@ -964,7 +916,6 @@
 
                 </div>
 
-
                 <div class="project-info">
 
                     <div class="project-title">
@@ -994,7 +945,6 @@
 
                 </div>
 
-
                 <div class="project-info">
 
                     <div class="project-title">
@@ -1016,9 +966,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- =========================
          FOOTER
-    ===================================================== -->
+    ========================= -->
 
     <footer>
 
@@ -1026,7 +976,6 @@
             &copy; 2016-2026 Project Portfolio.
             All rights reserved.
         </div>
-
 
         <div>
 
@@ -1036,8 +985,8 @@
                 <a
                     href="mailto:ar.jefreybolhayon@gmail.com"
                     style="
-                        color:#888;
-                        text-decoration:none;
+                        color: #888;
+                        text-decoration: none;
                     "
                 >
                     ar.jefreybolhayon@gmail.com
@@ -1051,9 +1000,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- =========================
          PROJECT CARD ANIMATION
-    ===================================================== -->
+    ========================= -->
 
     <script>
 
@@ -1110,3 +1059,6 @@
 
 </body>
 </html>
+```
+
+
