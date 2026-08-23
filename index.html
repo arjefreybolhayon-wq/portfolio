@@ -293,6 +293,53 @@
             filter: grayscale(0%);
         }
 
+        /* =========================
+           ARCHITECTURAL THESIS - WIDE IMAGE
+           ========================== */
+        .thesis-grid {
+            display: block;
+            width: 100%;
+        }
+
+        .thesis-project-card {
+            width: calc(100vw - 50px);
+            max-width: none;
+        }
+
+        .thesis-project-card .project-img-wrapper {
+            width: 100%;
+            height: auto;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .thesis-project-card .project-img-wrapper img {
+            width: 100%;
+            height: auto;
+            min-height: 600px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        @media (max-width: 968px) {
+            .thesis-project-card {
+                width: 100%;
+            }
+
+            .thesis-project-card .project-img-wrapper,
+            .thesis-project-card .project-img-wrapper img {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .thesis-project-card .project-img-wrapper,
+            .thesis-project-card .project-img-wrapper img {
+                min-height: 280px;
+            }
+        }
+
         .project-info {
             margin-top: 20px;
             display: flex;
@@ -624,9 +671,9 @@
             <h2>ARCHITECTURAL THESIS</h2>
         </div>
 
-        <div class="grid">
-            <!-- GUINOLBAY -->
-            <div class="project-card" id="guinolbay" data-project="guinolbay">
+        <div class="thesis-grid">
+            <!-- GUINOLBAY - ARCHITECTURAL THESIS -->
+            <div class="project-card thesis-project-card" id="guinolbay-thesis" data-project="guinolbay">
                 <div class="project-img-wrapper">
                     <a href="guinolbay.html" class="project-link">
                         <img src="guinolbay/DAYTIME EXTERIOR VIEW.jpg" alt="Guinolbay Residence">
