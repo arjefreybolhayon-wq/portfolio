@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Ar. Jefrey Bolhayon Project Portfolio</title>
-    <style> 
-        /* RESET & BASE STYLES */
+
+    <style>
+
+        /* =====================================================
+           RESET & BASE
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -19,18 +29,36 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION */
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             padding: 30px 50px;
+
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
+
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 10, 10, 0.9),
+                rgba(10, 10, 10, 0.35),
+                transparent
+            );
+        }
+
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .logo {
@@ -49,289 +77,44 @@
         .nav-links a {
             color: #888;
             text-decoration: none;
+
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: color 0.3s;
+
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
             color: #fff;
         }
 
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
 
-        <style>
-    /* =========================
-       HERO TITLE / LIGTAS IMAGE
-    ========================= */
-
-    .hero-title {
-        position: relative;
-        z-index: 10;
-        width: 45%;
-        max-width: 700px;
-        margin-left: 50px;
-        margin-top: 50px;
-        padding-right: 35px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    /* L.I.G.T.A.S. LOGO + TITLE IMAGE */
-    .ligtas-title-image {
-        display: block;
-        width: 100%;
-        max-width: 680px;
-        height: auto;
-        object-fit: contain;
-        margin-bottom: 28px;
-    }
-
-    /* EXISTING PROJECT DESCRIPTION */
-    .hero-title p {
-        margin-top: 0;
-        font-size: 14px;
-        color: #888;
-        letter-spacing: 0.3px;
-        line-height: 1.65;
-        max-width: 650px;
-        max-height: 40vh;
-        overflow-y: auto;
-        padding-right: 15px;
-    }
-
-    .hero-title p::-webkit-scrollbar {
-        width: 3px;
-    }
-
-    .hero-title p::-webkit-scrollbar-track {
-        background: #151515;
-    }
-
-    .hero-title p::-webkit-scrollbar-thumb {
-        background: #444;
-    }
-
-    /* =========================
-       VIDEO — DO NOT CHANGE
-    ========================= */
-
-    .hero-video-container {
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 55%;
-        height: 100%;
-        overflow: hidden;
-        z-index: 1;
-        background: #111;
-    }
-
-    .hero-video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-
-        /* Original video remains untouched */
-        filter: none;
-
-        transition: transform 0.8s ease;
-    }
-
-    .hero-video-container:hover .hero-video {
-        transform: scale(1.03);
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 968px) {
-
-        .hero {
-            height: auto;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding-top: 125px;
-        }
-
-        .hero-title {
-            width: 100%;
-            max-width: none;
-            margin: 0;
-            padding: 0 20px;
-            display: block;
-        }
-
-        .ligtas-title-image {
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-        }
-
-        .hero-title p {
-            max-height: none;
-            overflow: visible;
-            padding-right: 0;
-        }
-
-        .hero-video-container {
-            position: relative;
-            width: 100%;
-            height: 55vh;
-            min-height: 350px;
-            margin-top: 45px;
-        }
-    }
-
-    @media (max-width: 600px) {
-
-        .hero-title {
-            padding: 0 15px;
-        }
-
-        .ligtas-title-image {
-            margin-bottom: 25px;
-        }
-
-        .hero-title p {
-            font-size: 13px;
-        }
-
-        .hero-video-container {
-            height: 45vh;
-            min-height: 280px;
-        }
-
-        /* SCROLL INDICATOR */
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            left: 50px;
-            font-size: 12px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #444;
-        }
-
-        /* PORTFOLIO GRID SECTION */
-        .portfolio {
-            padding: 100px 50px;
-        }
-
-        .section-header {
-            margin-bottom: 80px;
-        }
-
-        .section-header h2 {
-            font-size: 32px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #fff;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-        }
-
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-img-wrapper {
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-            background-color: #111;
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .project-card:hover img {
-            transform: scale(1.03);
-            filter: grayscale(0%);
-        }
-
-        .project-info {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-
-        .project-title {
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .project-category {
-            font-size: 14px;
-            color: #666;
-            text-transform: uppercase;
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 80px 50px;
-            border-top: 1px solid #222;
-            display: flex;
-            justify-content: space-between;
-            color: #444;
-            font-size: 14px;
-        }
-
-        /* LOGO + BACK BUTTON GROUP */
-        .logo-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
 
         .back-home {
             display: inline-flex;
             align-items: center;
             gap: 10px;
+
+            width: fit-content;
+
             color: #888;
             text-decoration: none;
+
             font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
+
             transition: all 0.3s ease;
         }
 
         .back-home .arrow {
             font-size: 18px;
             line-height: 1;
+
             transition: transform 0.3s ease;
         }
 
@@ -343,132 +126,987 @@
             transform: translateX(-5px);
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 968px) {
-            nav { padding: 20px; }
-            .hero { flex-direction: column; justify-content: center; height: auto; padding-top: 120px; }
-            .hero-title { position: relative; left: 0; padding: 0 20px; max-width: 100%; }
-            .hero-title h1 { font-size: 8vw; }
-            .hero-video-container { position: relative; width: 100%; height: 50vh; margin-top: 40px; }
-            .grid { grid-template-columns: 1fr; gap: 30px; }
-            .project-img-wrapper { height: 400px; }
-            .portfolio { padding: 50px 20px; }
-            footer { padding: 40px 20px; flex-direction: column; gap: 20px; }
+
+        /* =====================================================
+           HERO SECTION
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+            height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
         }
+
+
+        /* =====================================================
+           HERO LEFT CONTENT
+        ===================================================== */
+
+        .hero-title {
+            position: relative;
+
+            z-index: 10;
+
+            width: 45%;
+            max-width: 720px;
+
+            margin-left: 50px;
+            margin-top: 50px;
+
+            padding-right: 40px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        /* =====================================================
+           LIGTAS IMAGE TITLE
+        ===================================================== */
+
+        .ligtas-title-image {
+            display: block;
+
+            width: 100%;
+            max-width: 690px;
+
+            height: auto;
+
+            object-fit: contain;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =====================================================
+           PROJECT DESCRIPTION
+        ===================================================== */
+
+        .hero-title p {
+            margin-top: 0;
+
+            font-size: 14px;
+
+            color: #888;
+
+            letter-spacing: 0.3px;
+
+            line-height: 1.65;
+
+            max-width: 650px;
+
+            max-height: 40vh;
+
+            overflow-y: auto;
+
+            padding-right: 15px;
+        }
+
+
+        /* DESCRIPTION SCROLLBAR */
+
+        .hero-title p::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .hero-title p::-webkit-scrollbar-track {
+            background: #151515;
+        }
+
+        .hero-title p::-webkit-scrollbar-thumb {
+            background: #444;
+        }
+
+
+        /* =====================================================
+           HERO VIDEO
+           
+           IMPORTANT:
+           video/project.mp4 IS NOT CHANGED
+        ===================================================== */
+
+        .hero-video-container {
+            position: absolute;
+
+            right: 0;
+            top: 0;
+
+            width: 55%;
+            height: 100%;
+
+            overflow: hidden;
+
+            z-index: 1;
+
+            background-color: #111;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            /* Keep video normal/full color */
+            filter: none;
+
+            transition: transform 0.8s ease;
+        }
+
+        .hero-video-container:hover .hero-video {
+            transform: scale(1.03);
+        }
+
+
+        /* =====================================================
+           VIDEO EDGE BLEND
+           
+           This does NOT modify the video itself.
+        ===================================================== */
+
+        .hero-video-container::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 100px;
+            height: 100%;
+
+            z-index: 2;
+
+            pointer-events: none;
+
+            background: linear-gradient(
+                to right,
+                #0a0a0a,
+                rgba(10, 10, 10, 0)
+            );
+        }
+
+
+        /* =====================================================
+           SCROLL INDICATOR
+        ===================================================== */
+
+        .scroll-down {
+            position: absolute;
+
+            bottom: 40px;
+            left: 50px;
+
+            z-index: 20;
+
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            color: #444;
+        }
+
+
+        /* =====================================================
+           PORTFOLIO
+        ===================================================== */
+
+        .portfolio {
+            position: relative;
+
+            z-index: 5;
+
+            padding: 100px 50px;
+
+            background-color: #0a0a0a;
+        }
+
+        .section-header {
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+
+            color: #fff;
+        }
+
+
+        /* =====================================================
+           PROJECT GRID
+        ===================================================== */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 50px;
+        }
+
+
+        /* =====================================================
+           PROJECT CARD
+        ===================================================== */
+
+        .project-card {
+            position: relative;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            opacity: 0;
+
+            transform: translateY(50px);
+
+            transition: all 0.8s ease;
+        }
+
+        .project-card.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           PROJECT IMAGE
+        ===================================================== */
+
+        .project-img-wrapper {
+            width: 100%;
+
+            height: 600px;
+
+            overflow: hidden;
+
+            background-color: #111;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: grayscale(100%);
+
+            transition:
+                all 0.6s cubic-bezier(
+                    0.25,
+                    1,
+                    0.5,
+                    1
+                );
+        }
+
+        .project-card:hover img {
+            transform: scale(1.03);
+
+            filter: grayscale(0%);
+        }
+
+
+        /* =====================================================
+           PROJECT INFORMATION
+        ===================================================== */
+
+        .project-info {
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: baseline;
+
+            gap: 20px;
+        }
+
+        .project-title {
+            font-size: 20px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .project-category {
+            font-size: 14px;
+
+            color: #666;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 80px 50px;
+
+            border-top: 1px solid #222;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #444;
+
+            font-size: 14px;
+        }
+
+        footer a {
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #fff !important;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            nav {
+                padding: 25px 35px;
+            }
+
+            .hero-title {
+                width: 46%;
+
+                margin-left: 35px;
+
+                padding-right: 30px;
+            }
+
+            .ligtas-title-image {
+                max-width: 620px;
+            }
+
+            .hero-title p {
+                font-size: 13px;
+            }
+
+            .hero-video-container {
+                width: 54%;
+            }
+
+            .scroll-down {
+                left: 35px;
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE / TABLET
+        ===================================================== */
+
+        @media (max-width: 968px) {
+
+            nav {
+                position: absolute;
+
+                padding: 20px;
+            }
+
+            .logo {
+                font-size: 17px;
+
+                letter-spacing: 2px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+
+            /* HERO */
+
+            .hero {
+                height: auto;
+
+                min-height: 100vh;
+
+                display: flex;
+
+                flex-direction: column;
+
+                justify-content: flex-start;
+
+                padding-top: 120px;
+
+                overflow: visible;
+            }
+
+
+            /* HERO TITLE */
+
+            .hero-title {
+                position: relative;
+
+                width: 100%;
+
+                max-width: none;
+
+                margin: 0;
+
+                padding: 0 20px;
+
+                display: block;
+            }
+
+
+            /* LIGTAS IMAGE */
+
+            .ligtas-title-image {
+                width: 100%;
+
+                max-width: 700px;
+
+                margin: 0 auto 30px auto;
+            }
+
+
+            /* DESCRIPTION */
+
+            .hero-title p {
+                max-width: 100%;
+
+                max-height: none;
+
+                overflow: visible;
+
+                padding-right: 0;
+
+                font-size: 14px;
+            }
+
+
+            /* VIDEO */
+
+            .hero-video-container {
+                position: relative;
+
+                width: 100%;
+
+                height: 55vh;
+
+                min-height: 350px;
+
+                margin-top: 45px;
+            }
+
+            .hero-video-container::before {
+                display: none;
+            }
+
+
+            /* SCROLL */
+
+            .scroll-down {
+                position: relative;
+
+                left: auto;
+
+                bottom: auto;
+
+                margin: 25px 20px;
+
+                order: 3;
+            }
+
+
+            /* PORTFOLIO */
+
+            .portfolio {
+                padding: 60px 20px;
+            }
+
+            .section-header {
+                margin-bottom: 45px;
+            }
+
+            .section-header h2 {
+                font-size: 27px;
+            }
+
+
+            /* PROJECT GRID */
+
+            .grid {
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+            }
+
+            .project-img-wrapper {
+                height: 400px;
+            }
+
+
+            /* PROJECT INFO */
+
+            .project-info {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 8px;
+            }
+
+
+            /* FOOTER */
+
+            footer {
+                padding: 40px 20px;
+
+                flex-direction: column;
+
+                gap: 20px;
+            }
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .hero {
+                padding-top: 110px;
+            }
+
+            .logo {
+                font-size: 15px;
+            }
+
+            .hero-title {
+                padding: 0 15px;
+            }
+
+            .ligtas-title-image {
+                margin-bottom: 25px;
+            }
+
+            .hero-title p {
+                font-size: 13px;
+
+                line-height: 1.65;
+            }
+
+            .hero-video-container {
+                height: 45vh;
+
+                min-height: 280px;
+            }
+
+            .project-img-wrapper {
+                height: 330px;
+            }
+
+            .project-title {
+                font-size: 17px;
+            }
+
+            .project-category {
+                font-size: 12px;
+            }
+        }
+
     </style>
 </head>
+
+
 <body>
 
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
     <nav>
+
         <div class="logo-group">
-            <div class="logo">Ar. Jefrey Bolhayon, UAP</div>
-            <a href="index.html" class="back-home" onclick="history.back(); return false;" aria-label="Back to previous page">
+
+            <div class="logo">
+                Ar. Jefrey Bolhayon, UAP
+            </div>
+
+            <a
+                href="index.html"
+                class="back-home"
+                onclick="history.back(); return false;"
+                aria-label="Back to previous page"
+            >
                 <span class="arrow">←</span>
                 <span>Back</span>
             </a>
+
         </div>
+
+
         <ul class="nav-links">
-            <li><a href="index.html">Back to Homepage</a></li>
+
+            <li>
+                <a href="index.html">
+                    Back to Homepage
+                </a>
+            </li>
+
         </ul>
+
     </nav>
 
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
     <section class="hero">
+
+
+        <!-- =================================================
+             LIGTAS TITLE + DESCRIPTION
+        ================================================= -->
+
         <div class="hero-title">
-            <div class="hero-header-flex">
-                <h1>L.I.G.T.A.S<br>COMPLEX CENTER.</h1>
-            </div>
-            <p>The L.I.G.T.A.S. Complex Center (Law Intervention Group Tactic Action Surveillance) is envisioned as an integrated disaster response and management facility, similar in function to Valenzuela City’s ALERT Center, Cagayan de Oro City’s ORO Central, and Pasig City’s RED Center. These facilities are designed to provide local government units (LGUs) with comprehensive support in coordination with the National Disaster Risk Reduction and Management Council (NDRRMC) and its regional divisions. The L.I.G.T.A.S. Complex Center is proposed as a new-generation disaster response facility capable of responding to emergencies, accommodating evacuees, conducting rescue operations, and providing various training facilities for natural-hazard preparedness and response.
-Different regions have varying levels of capability and resources for disaster preparedness and emergency response. Binangonan, Rizal, is considered a suitable location for the development of an enhanced disaster response complex capable of supporting day-to-day operations involving security, emergency response, community assistance, evacuation management, medical services, rescue operations, and disaster preparedness training.
-Binangonan is located along Laguna de Bay and is vulnerable to flooding, particularly during typhoons and periods of intense rainfall. Despite these recurring hazards, some existing developments and essential community facilities are situated in areas exposed to natural risks. Evacuation centers, hospitals, and schools are among the facilities that may be significantly affected during disasters and may lack adequate planning and infrastructure to withstand the impacts of severe natural calamities.
-The L.I.G.T.A.S. Binangonan Complex Center is envisioned as a centralized command and disaster response facility integrating an evacuation center, medical assistance unit, fire station, police station, rescue operations, and community assistance services, including Red Cross volunteers. The complex aims to provide an organized and coordinated response to disasters while serving as a safe and accessible temporary shelter for affected communities. Through the integration of emergency response, medical assistance, rescue operations, security, evacuation management, and disaster preparedness training, the facility seeks to strengthen Binangonan’s overall capacity to respond effectively to natural and human-induced hazards.
-.</p>
-            
+
+
+            <!--
+                ATTACHED LIGTAS TITLE IMAGE
+
+                Keep this image in the same folder
+                as this HTML file.
+
+                File:
+                LOGO & TITLE_03.png
+            -->
+
+            <img
+                src="LOGO & TITLE_03.png"
+                alt="L.I.G.T.A.S. Binangonan Complex Center"
+                class="ligtas-title-image"
+            >
+
+
+            <!-- =================================================
+                 ORIGINAL TEXT — KEPT
+            ================================================= -->
+
+            <p>
+                The L.I.G.T.A.S. Complex Center (Law Intervention Group Tactic Action Surveillance) is envisioned as an integrated disaster response and management facility, similar in function to Valenzuela City’s ALERT Center, Cagayan de Oro City’s ORO Central, and Pasig City’s RED Center. These facilities are designed to provide local government units (LGUs) with comprehensive support in coordination with the National Disaster Risk Reduction and Management Council (NDRRMC) and its regional divisions. The L.I.G.T.A.S. Complex Center is proposed as a new-generation disaster response facility capable of responding to emergencies, accommodating evacuees, conducting rescue operations, and providing various training facilities for natural-hazard preparedness and response.
+
+                Different regions have varying levels of capability and resources for disaster preparedness and emergency response. Binangonan, Rizal, is considered a suitable location for the development of an enhanced disaster response complex capable of supporting day-to-day operations involving security, emergency response, community assistance, evacuation management, medical services, rescue operations, and disaster preparedness training.
+
+                Binangonan is located along Laguna de Bay and is vulnerable to flooding, particularly during typhoons and periods of intense rainfall. Despite these recurring hazards, some existing developments and essential community facilities are situated in areas exposed to natural risks. Evacuation centers, hospitals, and schools are among the facilities that may be significantly affected during disasters and may lack adequate planning and infrastructure to withstand the impacts of severe natural calamities.
+
+                The L.I.G.T.A.S. Binangonan Complex Center is envisioned as a centralized command and disaster response facility integrating an evacuation center, medical assistance unit, fire station, police station, rescue operations, and community assistance services, including Red Cross volunteers. The complex aims to provide an organized and coordinated response to disasters while serving as a safe and accessible temporary shelter for affected communities. Through the integration of emergency response, medical assistance, rescue operations, security, evacuation management, and disaster preparedness training, the facility seeks to strengthen Binangonan’s overall capacity to respond effectively to natural and human-induced hazards.
+            </p>
+
         </div>
+
+
+
+        <!-- =====================================================
+             VIDEO
+
+             DO NOT CHANGE THIS SECTION.
+             Your original video remains:
+             video/project.mp4
+        ===================================================== -->
 
         <div class="hero-video-container">
-            <video autoplay loop muted playsinline class="hero-video">
-                <source src="video/project.mp4" type="video/mp4">
+
+            <video
+                autoplay
+                loop
+                muted
+                playsinline
+                class="hero-video"
+            >
+
+                <source
+                    src="video/project.mp4"
+                    type="video/mp4"
+                >
+
                 Your browser does not support the video tag.
+
             </video>
+
         </div>
 
-        <div class="scroll-down">↓ Scroll to explore</div>
+
+
+        <!-- SCROLL INDICATOR -->
+
+        <div class="scroll-down">
+            ↓ Scroll to explore
+        </div>
+
     </section>
 
-    <section class="portfolio" id="work">
+
+
+    <!-- =====================================================
+         SELECTED PROJECTS
+    ===================================================== -->
+
+    <section
+        class="portfolio"
+        id="work"
+    >
+
         <div class="section-header">
-            <h2>Selected Projects</h2>
+
+            <h2>
+                Selected Projects
+            </h2>
+
         </div>
-        
+
+
         <div class="grid">
-            <div class="project-card">
-                <div class="project-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <div class="project-title">The Concrete Pavilion</div>
-                    <div class="project-category">Residential / 2025</div>
-                </div>
-            </div>
+
+
+            <!-- PROJECT 1 -->
 
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Project 2">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
+                        alt="Project 1"
+                    >
+
                 </div>
+
+
                 <div class="project-info">
-                    <div class="project-title">Apex Tower</div>
-                    <div class="project-category">Commercial / 2026</div>
+
+                    <div class="project-title">
+                        The Concrete Pavilion
+                    </div>
+
+                    <div class="project-category">
+                        Residential / 2025
+                    </div>
+
                 </div>
+
             </div>
 
-            <div class="project-card">
-                <div class="project-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Project 3">
-                </div>
-                <div class="project-info">
-                    <div class="project-title">Minimalist Oasis</div>
-                    <div class="project-category">Interior / 2024</div>
-                </div>
-            </div>
+
+
+            <!-- PROJECT 2 -->
 
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Project 4">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+                        alt="Project 2"
+                    >
+
                 </div>
+
+
                 <div class="project-info">
-                    <div class="project-title">The Obsidian Villa</div>
-                    <div class="project-category">Residential / 2025</div>
+
+                    <div class="project-title">
+                        Apex Tower
+                    </div>
+
+                    <div class="project-category">
+                        Commercial / 2026
+                    </div>
+
                 </div>
+
             </div>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="project-card">
+
+                <div class="project-img-wrapper">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+                        alt="Project 3"
+                    >
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <div class="project-title">
+                        Minimalist Oasis
+                    </div>
+
+                    <div class="project-category">
+                        Interior / 2024
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="project-card">
+
+                <div class="project-img-wrapper">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+                        alt="Project 4"
+                    >
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <div class="project-title">
+                        The Obsidian Villa
+                    </div>
+
+                    <div class="project-category">
+                        Residential / 2025
+                    </div>
+
+                </div>
+
+            </div>
+
+
         </div>
+
     </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
 
     <footer>
-        <div>&copy; 2016-2026 Project Portfolio. All rights reserved.</div>
+
         <div>
-            <p>Connect: <a href="mailto:ar.jefreybolhayon@gmail.com" style="color: #888; text-decoration: none;">ar.jefreybolhayon@gmail.com</a></p>
+            &copy; 2016-2026 Project Portfolio.
+            All rights reserved.
         </div>
+
+
+        <div>
+
+            <p>
+                Connect:
+
+                <a
+                    href="mailto:ar.jefreybolhayon@gmail.com"
+                    style="
+                        color:#888;
+                        text-decoration:none;
+                    "
+                >
+                    ar.jefreybolhayon@gmail.com
+                </a>
+
+            </p>
+
+        </div>
+
     </footer>
 
+
+
+    <!-- =====================================================
+         PROJECT CARD ANIMATION
+    ===================================================== -->
+
     <script>
-        const cards = document.querySelectorAll('.project-card');
-        
+
+        const cards =
+            document.querySelectorAll('.project-card');
+
+
         const observerOptions = {
+
             threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
+
+            rootMargin:
+                "0px 0px -50px 0px"
+
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+
+        const observer =
+            new IntersectionObserver(
+
+                (entries, observer) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                'visible'
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                observerOptions
+
+            );
+
 
         cards.forEach(card => {
+
             observer.observe(card);
+
         });
+
     </script>
+
+
 </body>
+</html>
