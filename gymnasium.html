@@ -1,707 +1,736 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ar. Jefrey Bolhayon Project Portfolio</title>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 120px;
-        }
+```
+<style>
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 120px;
+    }
 
-        /* RESET & BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
+    /* RESET & BASE STYLES */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
 
-        body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
+    body {
+        background-color: #0a0a0a;
+        color: #ffffff;
+        overflow-x: hidden;
+    }
 
-        /* NAVIGATION */
+    /* NAVIGATION */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+    }
+
+    .nav-links a {
+        color: #888;
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #fff;
+    }
+
+    /* PORTFOLIO GRID SECTION */
+    .portfolio {
+        padding: 150px 50px 100px;
+    }
+
+    .section-header {
+        margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #fff;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .project-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+    }
+
+    .project-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .project-img-wrapper {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        background-color: #111;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .project-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-img-wrapper img {
+        transform: scale(1.03);
+    }
+
+    /* DESCRIPTION CARD STYLING */
+    .project-text-wrapper {
+        width: 100%;
+        height: 600px;
+        padding: 40px;
+        background-color: #141414;
+        border: 1px solid #222;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .project-text-wrapper p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #aaa;
+        letter-spacing: 0.5px;
+        text-align: justify;
+    }
+
+    /* YOUTUBE WALKTHROUGH BOX */
+    .walkthrough-link {
+        width: 100%;
+        margin-top: 30px;
+        padding: 18px;
+        background-color: #101010;
+        border: 1px solid #333;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .walkthrough-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.08),
+            transparent
+        );
+        transition: left 0.6s ease;
+    }
+
+    .walkthrough-link:hover::before {
+        left: 100%;
+    }
+
+    .walkthrough-link:hover {
+        border-color: #777;
+        background-color: #181818;
+        transform: translateY(-2px);
+    }
+
+    .play-icon {
+        width: 38px;
+        height: 28px;
+        background-color: #fff;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+        transition: all 0.3s ease;
+    }
+
+    .walkthrough-link:hover .play-icon {
+        transform: scale(1.08);
+        background-color: #f2f2f2;
+    }
+
+    /* ACTUAL SITE IMAGES SECTION */
+    .actual-site-section {
+        padding-top: 0;
+    }
+
+    .actual-site-section .section-header {
+        margin-bottom: 30px;
+    }
+
+    .actual-site-section .section-header h2 {
+        font-size: 24px;
+        letter-spacing: 2px;
+        white-space: nowrap;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 80px 50px;
+        border-top: 1px solid #222;
+        display: flex;
+        justify-content: space-between;
+        color: #444;
+        font-size: 14px;
+    }
+
+    /* LOGO + BACK BUTTON GROUP */
+    .logo-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .back-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #888;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+
+    .back-home .arrow {
+        font-size: 18px;
+        line-height: 1;
+        transition: transform 0.3s ease;
+    }
+
+    .back-home:hover {
+        color: #fff;
+    }
+
+    .back-home:hover .arrow {
+        transform: translateX(-5px);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 968px) {
+
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            color: #888;
-            text-decoration: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        /* PORTFOLIO GRID SECTION */
-        .portfolio {
-            padding: 150px 50px 100px;
-        }
-
-        .section-header {
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-size: 28px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #fff;
-            display: inline-block;
-            max-width: 100%;
+            padding: 20px;
         }
 
         .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: 30px;
         }
 
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-img-wrapper {
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-            background-color: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-img-wrapper img {
-            transform: scale(1.03);
-        }
-
-        /* DESCRIPTION CARD STYLING */
+        .project-img-wrapper,
         .project-text-wrapper {
-            width: 100%;
-            height: 600px;
-            padding: 40px;
-            background-color: #141414;
-            border: 1px solid #222;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            height: auto;
+            min-height: 400px;
         }
 
-        .project-text-wrapper p {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #aaa;
-            letter-spacing: 0.5px;
-            text-align: justify;
+        .portfolio {
+            padding: 100px 20px 50px;
         }
 
-        /* YOUTUBE WALKTHROUGH BOX */
-        .walkthrough-box {
-            width: 100%;
-            margin-top: 30px;
-            padding: 18px;
-            background-color: #101010;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-
-        .walkthrough-box:hover {
-            border-color: #666;
-            background-color: #151515;
-        }
-
-        .walkthrough-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .youtube-icon {
-            width: 28px;
-            height: 20px;
-            background-color: #fff;
-            color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 900;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
-
-        .walkthrough-video {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            background-color: #000;
-        }
-
-        .walkthrough-video iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            display: block;
-        }
-
-        /* ACTUAL SITE IMAGES SECTION */
-        .actual-site-section {
-            padding-top: 0;
-        }
-
-        .actual-site-section .section-header {
-            margin-bottom: 30px;
-        }
-
-        .actual-site-section .section-header h2 {
-            font-size: 24px;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-
-        /* FOOTER */
         footer {
-            padding: 80px 50px;
-            border-top: 1px solid #222;
-            display: flex;
-            justify-content: space-between;
-            color: #444;
-            font-size: 14px;
-        }
-
-        /* LOGO + BACK BUTTON GROUP */
-        .logo-group {
-            display: flex;
+            padding: 40px 20px;
             flex-direction: column;
-            gap: 10px;
+            gap: 20px;
         }
 
         .back-home {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #888;
-            text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
+            font-size: 11px;
         }
 
         .back-home .arrow {
-            font-size: 18px;
-            line-height: 1;
-            transition: transform 0.3s ease;
+            font-size: 16px;
         }
 
-        .back-home:hover {
-            color: #fff;
+        .actual-site-section .section-header h2 {
+            font-size: 20px;
+            letter-spacing: 1.5px;
         }
 
-        .back-home:hover .arrow {
-            transform: translateX(-5px);
+        .walkthrough-link {
+            padding: 14px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 968px) {
-
-            nav {
-                padding: 20px;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .project-img-wrapper,
-            .project-text-wrapper {
-                height: auto;
-                min-height: 400px;
-            }
-
-            .portfolio {
-                padding: 100px 20px 50px;
-            }
-
-            footer {
-                padding: 40px 20px;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .back-home {
-                font-size: 11px;
-            }
-
-            .back-home .arrow {
-                font-size: 16px;
-            }
-
-            .actual-site-section .section-header h2 {
-                font-size: 20px;
-                letter-spacing: 1.5px;
-            }
-
-            .walkthrough-box {
-                padding: 12px;
-            }
+        .play-icon {
+            width: 34px;
+            height: 25px;
+            font-size: 10px;
         }
-    </style>
+    }
+</style>
+```
+
 </head>
 
 <body>
 
-    <nav>
+```
+<nav>
 
-        <div class="logo-group">
+    <div class="logo-group">
 
-            <div class="logo">
-                Ar. Jefrey Bolhayon, UAP
-            </div>
+        <div class="logo">
+            Ar. Jefrey Bolhayon, UAP
+        </div>
 
-            <a href="index.html"
-               class="back-home"
-               onclick="history.back(); return false;"
-               aria-label="Back to previous page">
+        <a href="index.html"
+           class="back-home"
+           onclick="history.back(); return false;"
+           aria-label="Back to previous page">
 
-                <span class="arrow">←</span>
-                <span>Back</span>
+            <span class="arrow">←</span>
+            <span>Back</span>
 
+        </a>
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                Back to Homepage
             </a>
+        </li>
 
-        </div>
+    </ul>
 
-        <ul class="nav-links">
-
-            <li>
-                <a href="index.html">
-                    Back to Homepage
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
+</nav>
 
 
-    <!-- MAIN PROJECT SECTION -->
+<!-- MAIN PROJECT SECTION -->
 
-    <section class="portfolio" id="work">
+<section class="portfolio" id="work">
 
-        <div class="section-header">
+    <div class="section-header">
 
-            <h2>
-                RENOVATION OF AFP GYMNASIUM BLDG.
-            </h2>
+        <h2>
+            RENOVATION OF AFP GYMNASIUM BLDG.
+        </h2>
 
-        </div>
-
-
-        <div class="grid">
+    </div>
 
 
-            <!-- 1st Image -->
+    <div class="grid">
 
-            <div class="project-card">
 
-                <div class="project-img-wrapper">
+        <!-- 1st Image -->
 
-                    <img src="gymnasium/01.1.jpg"
-                         alt="EXTERIOR 1">
+        <div class="project-card">
 
-                </div>
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/01.1.jpg"
+                     alt="EXTERIOR 1">
 
             </div>
-
-
-            <!-- DESCRIPTION + YOUTUBE WALKTHROUGH -->
-
-            <div class="project-card">
-
-                <div class="project-text-wrapper">
-
-                    <p>
-                        The gymnasium design follows a modern sports and community-centered architectural concept, combining functionality, energy, and strong visual identity. The exterior uses a contemporary composition of clean geometric forms, green structural elements, large glazed surfaces, and dramatic lighting to create an active and welcoming character. The green façade treatment and dynamic patterns suggest movement and athleticism, while the warm wood finishes provide balance and a more inviting atmosphere.
-
-                        Inside, the design emphasizes flexibility and multi-sport functionality, providing spaces for basketball, volleyball, badminton, table tennis, billiards, swimming, and other recreational activities. The main sports hall features a spacious open floor, spectator seating, and an exposed structural ceiling enhanced with colorful linear elements that reflect the energy of sports. Consistent use of blue, green, red, and wood tones creates a cohesive visual identity throughout the facility, while large openings, high ceilings, and abundant artificial lighting help maintain a bright and comfortable environment. Overall, the concept presents the gymnasium as a dynamic, inclusive, and multifunctional sports hub designed to encourage physical activity, competition, recreation, and community interaction.
-                    </p>
-
-
-                    <!-- YOUTUBE WALKTHROUGH BOX -->
-
-                    <a
-                href="https://www.youtube.com/watch?v=PGGSp1QbtRU"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="walkthrough-link"
-            >
-
-                <span class="play-icon">
-                    ▶
-                </span>
-
-                <span>
-                    Watch Walkthrough Animation
-                </span>
-
-            </a>
-
-        </div>
-
-            </div>
-
-
-            <!-- 2nd Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/01.jpg"
-                         alt="INTERIOR 2">
-
-                </div>
-
-            </div>
-
-
-            <!-- 3rd Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/02.jpg"
-                         alt="INTERIOR 3">
-
-                </div>
-
-            </div>
-
-
-            <!-- 4th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/03.jpg"
-                         alt="INTERIOR 4">
-
-                </div>
-
-            </div>
-
-
-            <!-- 5th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/04.jpg"
-                         alt="INTERIOR 5">
-
-                </div>
-
-            </div>
-
-
-            <!-- 6th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/05.jpg"
-                         alt="INTERIOR 6">
-
-                </div>
-
-            </div>
-
-
-            <!-- 7th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/06.jpg"
-                         alt="INTERIOR 7">
-
-                </div>
-
-            </div>
-
-
-            <!-- 8th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/07.jpg"
-                         alt="INTERIOR 8">
-
-                </div>
-
-            </div>
-
-
-            <!-- 9th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/08.jpg"
-                         alt="INTERIOR 9">
-
-                </div>
-
-            </div>
-
-
-            <!-- 10th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/09.jpg"
-                         alt="INTERIOR 10">
-
-                </div>
-
-            </div>
-
-
-            <!-- 11th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/10.jpg"
-                         alt="INTERIOR 11">
-
-                </div>
-
-            </div>
-
-
-            <!-- 12th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/11.jpg"
-                         alt="INTERIOR 12">
-
-                </div>
-
-            </div>
-
-
-            <!-- 14th Image -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/12.jpg"
-                         alt="INTERIOR 14">
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- ACTUAL SITE IMAGES SECTION -->
-
-    <section class="portfolio actual-site-section"
-             id="actual-site">
-
-        <div class="section-header">
-
-            <h2>
-                ACTUAL SITE IMAGES
-            </h2>
 
         </div>
 
 
-        <div class="grid">
+        <!-- DESCRIPTION + YOUTUBE WALKTHROUGH -->
+
+        <div class="project-card">
+
+            <div class="project-text-wrapper">
+
+                <p>
+                    The gymnasium design follows a modern sports and community-centered architectural concept, combining functionality, energy, and strong visual identity. The exterior uses a contemporary composition of clean geometric forms, green structural elements, large glazed surfaces, and dramatic lighting to create an active and welcoming character. The green façade treatment and dynamic patterns suggest movement and athleticism, while the warm wood finishes provide balance and a more inviting atmosphere.
+
+                    Inside, the design emphasizes flexibility and multi-sport functionality, providing spaces for basketball, volleyball, badminton, table tennis, billiards, swimming, and other recreational activities. The main sports hall features a spacious open floor, spectator seating, and an exposed structural ceiling enhanced with colorful linear elements that reflect the energy of sports. Consistent use of blue, green, red, and wood tones creates a cohesive visual identity throughout the facility, while large openings, high ceilings, and abundant artificial lighting help maintain a bright and comfortable environment. Overall, the concept presents the gymnasium as a dynamic, inclusive, and multifunctional sports hub designed to encourage physical activity, competition, recreation, and community interaction.
+                </p>
 
 
-            <!-- Actual Site 1 -->
+                <!-- YOUTUBE WALKTHROUGH BOX -->
 
-            <div class="project-card">
+                <a
+                    href="https://www.youtube.com/watch?v=PGGSp1QbtRU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="walkthrough-link"
+                    aria-label="Watch Gymnasium Walkthrough Animation on YouTube"
+                >
 
-                <div class="project-img-wrapper">
+                    <span class="play-icon">
+                        ▶
+                    </span>
 
-                    <img src="gymnasium/430346536_809988724285692_2595425489618366867_n.jpg"
-                         alt="ACTUAL 1">
-
-                </div>
-
-            </div>
-
-
-            <!-- Actual Site 2 -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/430288855_973581760774631_4558874262281330636_n.jpg"
-                         alt="ACTUAL 2">
-
-                </div>
-
-            </div>
-
-
-            <!-- Actual Site 3 -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/430489940_952297709823564_7629298350182413020_n.jpg"
-                         alt="ACTUAL 3">
-
-                </div>
-
-            </div>
-
-
-            <!-- Actual Site 4 -->
-
-            <div class="project-card">
-
-                <div class="project-img-wrapper">
-
-                    <img src="gymnasium/429819008_1364323480943294_6431904062181278245_n.jpg"
-                         alt="ACTUAL 4">
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div>
-            &copy; 2016-2026 Project Portfolio.
-            All rights reserved.
-        </div>
-
-        <div>
-
-            <p>
-                Connect:
-
-                <a href="mailto:ar.jefreybolhayon@gmail.com"
-                   style="color: #888; text-decoration: none;">
-
-                    ar.jefreybolhayon@gmail.com
+                    <span>
+                        Watch Walkthrough Animation
+                    </span>
 
                 </a>
-            </p>
+
+            </div>
 
         </div>
 
-    </footer>
+
+        <!-- 2nd Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/01.jpg"
+                     alt="INTERIOR 2">
+
+            </div>
+
+        </div>
 
 
-    <script>
+        <!-- 3rd Image -->
 
-        // Reveal project cards on page load.
+        <div class="project-card">
 
-        document.addEventListener('DOMContentLoaded', function () {
+            <div class="project-img-wrapper">
 
-            document.querySelectorAll('.project-card').forEach(function (card) {
+                <img src="gymnasium/02.jpg"
+                     alt="INTERIOR 3">
 
-                card.classList.add('visible');
+            </div>
 
-            });
+        </div>
+
+
+        <!-- 4th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/03.jpg"
+                     alt="INTERIOR 4">
+
+            </div>
+
+        </div>
+
+
+        <!-- 5th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/04.jpg"
+                     alt="INTERIOR 5">
+
+            </div>
+
+        </div>
+
+
+        <!-- 6th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/05.jpg"
+                     alt="INTERIOR 6">
+
+            </div>
+
+        </div>
+
+
+        <!-- 7th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/06.jpg"
+                     alt="INTERIOR 7">
+
+            </div>
+
+        </div>
+
+
+        <!-- 8th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/07.jpg"
+                     alt="INTERIOR 8">
+
+            </div>
+
+        </div>
+
+
+        <!-- 9th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/08.jpg"
+                     alt="INTERIOR 9">
+
+            </div>
+
+        </div>
+
+
+        <!-- 10th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/09.jpg"
+                     alt="INTERIOR 10">
+
+            </div>
+
+        </div>
+
+
+        <!-- 11th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/10.jpg"
+                     alt="INTERIOR 11">
+
+            </div>
+
+        </div>
+
+
+        <!-- 12th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/11.jpg"
+                     alt="INTERIOR 12">
+
+            </div>
+
+        </div>
+
+
+        <!-- 14th Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/12.jpg"
+                     alt="INTERIOR 14">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ACTUAL SITE IMAGES SECTION -->
+
+<section class="portfolio actual-site-section"
+         id="actual-site">
+
+    <div class="section-header">
+
+        <h2>
+            ACTUAL SITE IMAGES
+        </h2>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <!-- Actual Site 1 -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/430346536_809988724285692_2595425489618366867_n.jpg"
+                     alt="ACTUAL 1">
+
+            </div>
+
+        </div>
+
+
+        <!-- Actual Site 2 -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/430288855_973581760774631_4558874262281330636_n.jpg"
+                     alt="ACTUAL 2">
+
+            </div>
+
+        </div>
+
+
+        <!-- Actual Site 3 -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/430489940_952297709823564_7629298350182413020_n.jpg"
+                     alt="ACTUAL 3">
+
+            </div>
+
+        </div>
+
+
+        <!-- Actual Site 4 -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="gymnasium/429819008_1364323480943294_6431904062181278245_n.jpg"
+                     alt="ACTUAL 4">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        &copy; 2016-2026 Project Portfolio.
+        All rights reserved.
+    </div>
+
+    <div>
+
+        <p>
+            Connect:
+
+            <a href="mailto:ar.jefreybolhayon@gmail.com"
+               style="color: #888; text-decoration: none;">
+
+                ar.jefreybolhayon@gmail.com
+
+            </a>
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    // Reveal project cards on page load.
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        document.querySelectorAll('.project-card').forEach(function (card) {
+
+            card.classList.add('visible');
 
         });
 
-    </script>
+    });
+
+</script>
+```
 
 </body>
 </html>
-
