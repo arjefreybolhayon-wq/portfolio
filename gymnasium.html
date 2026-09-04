@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,10 +71,12 @@
         }
 
         .section-header h2 {
-            font-size: 32px;
+            font-size: 28px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             color: #fff;
+            display: inline-block;
+            max-width: 100%;
         }
 
         .grid {
@@ -138,6 +141,17 @@
             text-align: justify;
         }
 
+        /* ACTUAL SITE IMAGES SECTION */
+        .actual-site-section .section-header {
+            margin-bottom: 30px;
+        }
+
+        .actual-site-section .section-header h2 {
+            font-size: 24px;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
         /* FOOTER */
         footer {
             padding: 80px 50px;
@@ -190,6 +204,11 @@
             footer { padding: 40px 20px; flex-direction: column; gap: 20px; }
             .back-home { font-size: 11px; }
             .back-home .arrow { font-size: 16px; }
+
+            .actual-site-section .section-header h2 {
+                font-size: 20px;
+                letter-spacing: 1.5px;
+            }
         }
     </style>
 </head>
@@ -316,7 +335,7 @@ Inside, the design emphasizes flexibility and multi-sport functionality, providi
         </div>
     </section>
 
-    <section class="portfolio" id="work">
+    <section class="portfolio actual-site-section" id="actual-site">
         <div class="section-header">
             <h2>ACTUAL SITE IMAGES</h2>
         </div>
@@ -362,3 +381,4 @@ Inside, the design emphasizes flexibility and multi-sport functionality, providi
     </script>
 </body>
 </html>
+```
