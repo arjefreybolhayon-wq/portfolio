@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ar. Jefrey Bolhayon Project Portfolio</title>
+
     <style>
-        html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;
+        }
+
         /* RESET & BASE STYLES */
         * {
             margin: 0;
@@ -140,33 +145,59 @@
             text-align: justify;
         }
 
-        /* WALKTHROUGH ANIMATION LINK */
-        .walkthrough-link {
-            display: inline-flex;
+        /* YOUTUBE WALKTHROUGH BOX */
+        .walkthrough-box {
+            width: 100%;
+            margin-top: 30px;
+            padding: 18px;
+            background-color: #101010;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .walkthrough-box:hover {
+            border-color: #666;
+            background-color: #151515;
+        }
+
+        .walkthrough-title {
+            display: flex;
             align-items: center;
             gap: 12px;
-            margin-top: 30px;
-            width: fit-content;
-            color: #888;
-            text-decoration: none;
+            margin-bottom: 15px;
+            color: #fff;
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: all 0.3s ease;
         }
 
-        .walkthrough-arrow {
-            font-size: 14px;
-            transition: transform 0.3s ease;
+        .youtube-icon {
+            width: 28px;
+            height: 20px;
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 900;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         }
 
-        .walkthrough-link:hover {
-            color: #fff;
+        .walkthrough-video {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background-color: #000;
         }
 
-        .walkthrough-link:hover .walkthrough-arrow {
-            transform: translateX(5px);
+        .walkthrough-video iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
         }
 
         /* ACTUAL SITE IMAGES SECTION */
@@ -229,7 +260,10 @@
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 968px) {
-            nav { padding: 20px; }
+
+            nav {
+                padding: 20px;
+            }
 
             .grid {
                 grid-template-columns: 1fr;
@@ -264,51 +298,83 @@
                 font-size: 20px;
                 letter-spacing: 1.5px;
             }
+
+            .walkthrough-box {
+                padding: 12px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav>
+
         <div class="logo-group">
-            <div class="logo">Ar. Jefrey Bolhayon, UAP</div>
+
+            <div class="logo">
+                Ar. Jefrey Bolhayon, UAP
+            </div>
 
             <a href="index.html"
                class="back-home"
                onclick="history.back(); return false;"
                aria-label="Back to previous page">
+
                 <span class="arrow">←</span>
                 <span>Back</span>
+
             </a>
+
         </div>
 
         <ul class="nav-links">
+
             <li>
-                <a href="index.html">Back to Homepage</a>
+                <a href="index.html">
+                    Back to Homepage
+                </a>
             </li>
+
         </ul>
+
     </nav>
 
 
     <!-- MAIN PROJECT SECTION -->
+
     <section class="portfolio" id="work">
 
         <div class="section-header">
-            <h2>RENOVATION OF AFP GYMNASIUM BLDG.</h2>
+
+            <h2>
+                RENOVATION OF AFP GYMNASIUM BLDG.
+            </h2>
+
         </div>
+
 
         <div class="grid">
 
+
             <!-- 1st Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/01.1.jpg" alt="EXTERIOR 1">
+
+                    <img src="gymnasium/01.1.jpg"
+                         alt="EXTERIOR 1">
+
                 </div>
+
             </div>
 
 
-            <!-- Description Text Block -->
+            <!-- DESCRIPTION + YOUTUBE WALKTHROUGH -->
+
             <div class="project-card">
+
                 <div class="project-text-wrapper">
 
                     <p>
@@ -318,197 +384,333 @@
                     </p>
 
 
-                    <!-- WALKTHROUGH ANIMATION LINK -->
-                    <a href="gymnasium/walkthrough.mp4"
-                       class="walkthrough-link"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                    <!-- YOUTUBE WALKTHROUGH BOX -->
 
-                        <span class="walkthrough-arrow">▶</span>
-                        <span>WALKTHROUGH ANIMATION</span>
+                    <div class="walkthrough-box">
 
-                    </a>
+                        <div class="walkthrough-title">
+
+                            <div class="youtube-icon">
+                                ▶
+                            </div>
+
+                            <span>
+                                WALKTHROUGH ANIMATION
+                            </span>
+
+                        </div>
+
+
+                        <div class="walkthrough-video">
+
+                            <iframe
+                                src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID"
+                                title="AFP Gymnasium Walkthrough Animation"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+
+                        </div>
+
+                    </div>
 
                 </div>
+
             </div>
 
 
             <!-- 2nd Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/01.jpg" alt="INTERIOR 2">
+
+                    <img src="gymnasium/01.jpg"
+                         alt="INTERIOR 2">
+
                 </div>
+
             </div>
 
 
             <!-- 3rd Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/02.jpg" alt="INTERIOR 3">
+
+                    <img src="gymnasium/02.jpg"
+                         alt="INTERIOR 3">
+
                 </div>
+
             </div>
 
 
             <!-- 4th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/03.jpg" alt="INTERIOR 4">
+
+                    <img src="gymnasium/03.jpg"
+                         alt="INTERIOR 4">
+
                 </div>
+
             </div>
 
 
             <!-- 5th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/04.jpg" alt="INTERIOR 5">
+
+                    <img src="gymnasium/04.jpg"
+                         alt="INTERIOR 5">
+
                 </div>
+
             </div>
 
 
             <!-- 6th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/05.jpg" alt="INTERIOR 6">
+
+                    <img src="gymnasium/05.jpg"
+                         alt="INTERIOR 6">
+
                 </div>
+
             </div>
 
 
             <!-- 7th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/06.jpg" alt="INTERIOR 7">
+
+                    <img src="gymnasium/06.jpg"
+                         alt="INTERIOR 7">
+
                 </div>
+
             </div>
 
 
             <!-- 8th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/07.jpg" alt="INTERIOR 8">
+
+                    <img src="gymnasium/07.jpg"
+                         alt="INTERIOR 8">
+
                 </div>
+
             </div>
 
 
             <!-- 9th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/08.jpg" alt="INTERIOR 9">
+
+                    <img src="gymnasium/08.jpg"
+                         alt="INTERIOR 9">
+
                 </div>
+
             </div>
 
 
             <!-- 10th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/09.jpg" alt="INTERIOR 10">
+
+                    <img src="gymnasium/09.jpg"
+                         alt="INTERIOR 10">
+
                 </div>
+
             </div>
 
 
             <!-- 11th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/10.jpg" alt="INTERIOR 11">
+
+                    <img src="gymnasium/10.jpg"
+                         alt="INTERIOR 11">
+
                 </div>
+
             </div>
 
 
             <!-- 12th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/11.jpg" alt="INTERIOR 12">
+
+                    <img src="gymnasium/11.jpg"
+                         alt="INTERIOR 12">
+
                 </div>
+
             </div>
 
 
             <!-- 14th Image -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/12.jpg" alt="INTERIOR 14">
+
+                    <img src="gymnasium/12.jpg"
+                         alt="INTERIOR 14">
+
                 </div>
+
             </div>
 
+
         </div>
+
     </section>
 
 
     <!-- ACTUAL SITE IMAGES SECTION -->
-    <section class="portfolio actual-site-section" id="actual-site">
+
+    <section class="portfolio actual-site-section"
+             id="actual-site">
 
         <div class="section-header">
-            <h2>ACTUAL SITE IMAGES</h2>
+
+            <h2>
+                ACTUAL SITE IMAGES
+            </h2>
+
         </div>
+
 
         <div class="grid">
 
+
             <!-- Actual Site 1 -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
+
                     <img src="gymnasium/430346536_809988724285692_2595425489618366867_n.jpg"
                          alt="ACTUAL 1">
+
                 </div>
+
             </div>
 
 
             <!-- Actual Site 2 -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
+
                     <img src="gymnasium/430288855_973581760774631_4558874262281330636_n.jpg"
                          alt="ACTUAL 2">
+
                 </div>
+
             </div>
 
 
             <!-- Actual Site 3 -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
+
                     <img src="gymnasium/430489940_952297709823564_7629298350182413020_n.jpg"
                          alt="ACTUAL 3">
+
                 </div>
+
             </div>
 
 
             <!-- Actual Site 4 -->
+
             <div class="project-card">
+
                 <div class="project-img-wrapper">
+
                     <img src="gymnasium/429819008_1364323480943294_6431904062181278245_n.jpg"
                          alt="ACTUAL 4">
+
                 </div>
+
             </div>
 
+
         </div>
+
     </section>
 
 
     <!-- FOOTER -->
+
     <footer>
 
         <div>
-            &copy; 2016-2026 Project Portfolio. All rights reserved.
+            &copy; 2016-2026 Project Portfolio.
+            All rights reserved.
         </div>
 
         <div>
+
             <p>
                 Connect:
+
                 <a href="mailto:ar.jefreybolhayon@gmail.com"
                    style="color: #888; text-decoration: none;">
+
                     ar.jefreybolhayon@gmail.com
+
                 </a>
             </p>
+
         </div>
 
     </footer>
 
 
     <script>
+
         // Reveal project cards on page load.
+
         document.addEventListener('DOMContentLoaded', function () {
 
             document.querySelectorAll('.project-card').forEach(function (card) {
+
                 card.classList.add('visible');
+
             });
 
         });
+
     </script>
 
 </body>
