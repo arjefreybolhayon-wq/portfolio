@@ -140,6 +140,35 @@
             text-align: justify;
         }
 
+        /* WALKTHROUGH ANIMATION LINK */
+        .walkthrough-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 30px;
+            width: fit-content;
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .walkthrough-arrow {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .walkthrough-link:hover {
+            color: #fff;
+        }
+
+        .walkthrough-link:hover .walkthrough-arrow {
+            transform: translateX(5px);
+        }
+
         /* ACTUAL SITE IMAGES SECTION */
         .actual-site-section {
             padding-top: 0;
@@ -201,12 +230,35 @@
         /* RESPONSIVE DESIGN */
         @media (max-width: 968px) {
             nav { padding: 20px; }
-            .grid { grid-template-columns: 1fr; gap: 30px; }
-            .project-img-wrapper, .project-text-wrapper { height: auto; min-height: 400px; }
-            .portfolio { padding: 100px 20px 50px; }
-            footer { padding: 40px 20px; flex-direction: column; gap: 20px; }
-            .back-home { font-size: 11px; }
-            .back-home .arrow { font-size: 16px; }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-img-wrapper,
+            .project-text-wrapper {
+                height: auto;
+                min-height: 400px;
+            }
+
+            .portfolio {
+                padding: 100px 20px 50px;
+            }
+
+            footer {
+                padding: 40px 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .back-home {
+                font-size: 11px;
+            }
+
+            .back-home .arrow {
+                font-size: 16px;
+            }
 
             .actual-site-section .section-header h2 {
                 font-size: 20px;
@@ -220,18 +272,27 @@
     <nav>
         <div class="logo-group">
             <div class="logo">Ar. Jefrey Bolhayon, UAP</div>
-            <a href="index.html" class="back-home" onclick="history.back(); return false;" aria-label="Back to previous page">
+
+            <a href="index.html"
+               class="back-home"
+               onclick="history.back(); return false;"
+               aria-label="Back to previous page">
                 <span class="arrow">←</span>
                 <span>Back</span>
             </a>
         </div>
+
         <ul class="nav-links">
-            <li><a href="index.html">Back to Homepage</a></li>
+            <li>
+                <a href="index.html">Back to Homepage</a>
+            </li>
         </ul>
     </nav>
 
+
     <!-- MAIN PROJECT SECTION -->
     <section class="portfolio" id="work">
+
         <div class="section-header">
             <h2>RENOVATION OF AFP GYMNASIUM BLDG.</h2>
         </div>
@@ -245,16 +306,32 @@
                 </div>
             </div>
 
+
             <!-- Description Text Block -->
             <div class="project-card">
                 <div class="project-text-wrapper">
+
                     <p>
                         The gymnasium design follows a modern sports and community-centered architectural concept, combining functionality, energy, and strong visual identity. The exterior uses a contemporary composition of clean geometric forms, green structural elements, large glazed surfaces, and dramatic lighting to create an active and welcoming character. The green façade treatment and dynamic patterns suggest movement and athleticism, while the warm wood finishes provide balance and a more inviting atmosphere.
 
                         Inside, the design emphasizes flexibility and multi-sport functionality, providing spaces for basketball, volleyball, badminton, table tennis, billiards, swimming, and other recreational activities. The main sports hall features a spacious open floor, spectator seating, and an exposed structural ceiling enhanced with colorful linear elements that reflect the energy of sports. Consistent use of blue, green, red, and wood tones creates a cohesive visual identity throughout the facility, while large openings, high ceilings, and abundant artificial lighting help maintain a bright and comfortable environment. Overall, the concept presents the gymnasium as a dynamic, inclusive, and multifunctional sports hub designed to encourage physical activity, competition, recreation, and community interaction.
                     </p>
+
+
+                    <!-- WALKTHROUGH ANIMATION LINK -->
+                    <a href="gymnasium/walkthrough.mp4"
+                       class="walkthrough-link"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        <span class="walkthrough-arrow">▶</span>
+                        <span>WALKTHROUGH ANIMATION</span>
+
+                    </a>
+
                 </div>
             </div>
+
 
             <!-- 2nd Image -->
             <div class="project-card">
@@ -263,12 +340,14 @@
                 </div>
             </div>
 
+
             <!-- 3rd Image -->
             <div class="project-card">
                 <div class="project-img-wrapper">
                     <img src="gymnasium/02.jpg" alt="INTERIOR 3">
                 </div>
             </div>
+
 
             <!-- 4th Image -->
             <div class="project-card">
@@ -277,12 +356,14 @@
                 </div>
             </div>
 
+
             <!-- 5th Image -->
             <div class="project-card">
                 <div class="project-img-wrapper">
                     <img src="gymnasium/04.jpg" alt="INTERIOR 5">
                 </div>
             </div>
+
 
             <!-- 6th Image -->
             <div class="project-card">
@@ -291,12 +372,14 @@
                 </div>
             </div>
 
+
             <!-- 7th Image -->
             <div class="project-card">
                 <div class="project-img-wrapper">
                     <img src="gymnasium/06.jpg" alt="INTERIOR 7">
                 </div>
             </div>
+
 
             <!-- 8th Image -->
             <div class="project-card">
@@ -305,12 +388,14 @@
                 </div>
             </div>
 
+
             <!-- 9th Image -->
             <div class="project-card">
                 <div class="project-img-wrapper">
                     <img src="gymnasium/08.jpg" alt="INTERIOR 9">
                 </div>
             </div>
+
 
             <!-- 10th Image -->
             <div class="project-card">
@@ -319,6 +404,7 @@
                 </div>
             </div>
 
+
             <!-- 11th Image -->
             <div class="project-card">
                 <div class="project-img-wrapper">
@@ -326,12 +412,14 @@
                 </div>
             </div>
 
+
             <!-- 12th Image -->
             <div class="project-card">
                 <div class="project-img-wrapper">
                     <img src="gymnasium/11.jpg" alt="INTERIOR 12">
                 </div>
             </div>
+
 
             <!-- 14th Image -->
             <div class="project-card">
@@ -356,28 +444,35 @@
             <!-- Actual Site 1 -->
             <div class="project-card">
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/430346536_809988724285692_2595425489618366867_n.jpg" alt="ACTUAL 1">
+                    <img src="gymnasium/430346536_809988724285692_2595425489618366867_n.jpg"
+                         alt="ACTUAL 1">
                 </div>
             </div>
+
 
             <!-- Actual Site 2 -->
             <div class="project-card">
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/430288855_973581760774631_4558874262281330636_n.jpg" alt="ACTUAL 2">
+                    <img src="gymnasium/430288855_973581760774631_4558874262281330636_n.jpg"
+                         alt="ACTUAL 2">
                 </div>
             </div>
+
 
             <!-- Actual Site 3 -->
             <div class="project-card">
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/430489940_952297709823564_7629298350182413020_n.jpg" alt="ACTUAL 3">
+                    <img src="gymnasium/430489940_952297709823564_7629298350182413020_n.jpg"
+                         alt="ACTUAL 3">
                 </div>
             </div>
+
 
             <!-- Actual Site 4 -->
             <div class="project-card">
                 <div class="project-img-wrapper">
-                    <img src="gymnasium/429819008_1364323480943294_6431904062181278245_n.jpg" alt="ACTUAL 4">
+                    <img src="gymnasium/429819008_1364323480943294_6431904062181278245_n.jpg"
+                         alt="ACTUAL 4">
                 </div>
             </div>
 
@@ -387,7 +482,10 @@
 
     <!-- FOOTER -->
     <footer>
-        <div>&copy; 2016-2026 Project Portfolio. All rights reserved.</div>
+
+        <div>
+            &copy; 2016-2026 Project Portfolio. All rights reserved.
+        </div>
 
         <div>
             <p>
@@ -398,17 +496,21 @@
                 </a>
             </p>
         </div>
+
     </footer>
 
 
     <script>
         // Reveal project cards on page load.
         document.addEventListener('DOMContentLoaded', function () {
+
             document.querySelectorAll('.project-card').forEach(function (card) {
                 card.classList.add('visible');
             });
+
         });
     </script>
 
 </body>
 </html>
+
