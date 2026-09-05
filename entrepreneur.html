@@ -1,274 +1,519 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ar. Jefrey Bolhayon Project Portfolio</title>
-    <style>
-        html { scroll-behavior: smooth; scroll-padding-top: 120px; }
-        /* RESET & BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
 
-        body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
+```
+<style>
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 120px;
+    }
 
-        /* NAVIGATION */
+    /* RESET & BASE STYLES */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body {
+        background-color: #0a0a0a;
+        color: #ffffff;
+        overflow-x: hidden;
+    }
+
+    /* NAVIGATION */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+    }
+
+    .nav-links a {
+        color: #888;
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #fff;
+    }
+
+    /* PORTFOLIO GRID SECTION */
+    .portfolio {
+        padding: 150px 50px 100px;
+    }
+
+    .section-header {
+        margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #fff;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .project-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+    }
+
+    .project-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .project-img-wrapper {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        background-color: #111;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .project-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-img-wrapper img {
+        transform: scale(1.03);
+    }
+
+    /* DESCRIPTION CARD STYLING */
+    .project-text-wrapper {
+        width: 100%;
+        height: 600px;
+        padding: 40px;
+        background-color: #141414;
+        border: 1px solid #222;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .project-text-wrapper p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #aaa;
+        letter-spacing: 0.5px;
+        text-align: justify;
+    }
+
+    /* YOUTUBE WALKTHROUGH BOX */
+    .walkthrough-link {
+        width: 100%;
+        margin-top: 30px;
+        padding: 18px;
+        background-color: #101010;
+        border: 1px solid #333;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .walkthrough-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.08),
+            transparent
+        );
+        transition: left 0.6s ease;
+    }
+
+    .walkthrough-link:hover::before {
+        left: 100%;
+    }
+
+    .walkthrough-link:hover {
+        border-color: #777;
+        background-color: #181818;
+        transform: translateY(-2px);
+    }
+
+    .play-icon {
+        width: 38px;
+        height: 28px;
+        background-color: #fff;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+        transition: all 0.3s ease;
+    }
+
+    .walkthrough-link:hover .play-icon {
+        transform: scale(1.08);
+        background-color: #f2f2f2;
+    }
+
+    /* ACTUAL SITE IMAGES SECTION */
+    .actual-site-section {
+        padding-top: 0;
+    }
+
+    .actual-site-section .section-header {
+        margin-bottom: 30px;
+    }
+
+    .actual-site-section .section-header h2 {
+        font-size: 24px;
+        letter-spacing: 2px;
+        white-space: nowrap;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 80px 50px;
+        border-top: 1px solid #222;
+        display: flex;
+        justify-content: space-between;
+        color: #444;
+        font-size: 14px;
+    }
+
+    /* LOGO + BACK BUTTON GROUP */
+    .logo-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .back-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #888;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+
+    .back-home .arrow {
+        font-size: 18px;
+        line-height: 1;
+        transition: transform 0.3s ease;
+    }
+
+    .back-home:hover {
+        color: #fff;
+    }
+
+    .back-home:hover .arrow {
+        transform: translateX(-5px);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 968px) {
+
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            color: #888;
-            text-decoration: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        /* PORTFOLIO GRID SECTION */
-        .portfolio {
-            padding: 150px 50px 100px;
-        }
-
-        .section-header {
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-size: 32px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #fff;
+            padding: 20px;
         }
 
         .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: 30px;
         }
 
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-img-wrapper {
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-            background-color: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-img-wrapper img {
-            transform: scale(1.03);
-        }
-
-        /* DESCRIPTION CARD STYLING */
+        .project-img-wrapper,
         .project-text-wrapper {
-            width: 100%;
-            height: 600px;
-            padding: 40px;
-            background-color: #141414;
-            border: 1px solid #222;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            height: auto;
+            min-height: 400px;
         }
 
-        .project-text-wrapper p {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #aaa;
-            letter-spacing: 0.5px;
-            text-align: justify;
+        .portfolio {
+            padding: 100px 20px 50px;
         }
 
-        /* FOOTER */
         footer {
-            padding: 80px 50px;
-            border-top: 1px solid #222;
-            display: flex;
-            justify-content: space-between;
-            color: #444;
-            font-size: 14px;
-        }
-
-        /* LOGO + BACK BUTTON GROUP */
-        .logo-group {
-            display: flex;
+            padding: 40px 20px;
             flex-direction: column;
-            gap: 10px;
+            gap: 20px;
         }
 
         .back-home {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #888;
-            text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
+            font-size: 11px;
         }
 
         .back-home .arrow {
-            font-size: 18px;
-            line-height: 1;
-            transition: transform 0.3s ease;
+            font-size: 16px;
         }
 
-        .back-home:hover {
-            color: #fff;
+        .actual-site-section .section-header h2 {
+            font-size: 20px;
+            letter-spacing: 1.5px;
         }
 
-        .back-home:hover .arrow {
-            transform: translateX(-5px);
+        .walkthrough-link {
+            padding: 14px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 968px) {
-            nav { padding: 20px; }
-            .grid { grid-template-columns: 1fr; gap: 30px; }
-            .project-img-wrapper, .project-text-wrapper { height: auto; min-height: 400px; }
-            .portfolio { padding: 100px 20px 50px; }
-            footer { padding: 40px 20px; flex-direction: column; gap: 20px; }
-            .back-home { font-size: 11px; }
-            .back-home .arrow { font-size: 16px; }
+        .play-icon {
+            width: 34px;
+            height: 25px;
+            font-size: 10px;
         }
-    </style>
+    }
+</style>
+```
+
 </head>
+
 <body>
 
-    <nav>
-        <div class="logo-group">
-            <div class="logo">Ar. Jefrey Bolhayon, UAP</div>
-            <a href="index.html" class="back-home" onclick="history.back(); return false;" aria-label="Back to previous page">
-                <span class="arrow">←</span>
-                <span>Back</span>
+```
+<nav>
+
+    <div class="logo-group">
+
+        <div class="logo">
+            Ar. Jefrey Bolhayon, UAP
+        </div>
+
+        <a href="index.html"
+           class="back-home"
+           onclick="history.back(); return false;"
+           aria-label="Back to previous page">
+
+            <span class="arrow">←</span>
+            <span>Back</span>
+
+        </a>
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                Back to Homepage
             </a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Back to Homepage</a></li>
-        </ul>
-    </nav>
+        </li>
 
-    <section class="portfolio" id="work">
-        <div class="section-header">
-            <h2>MRS. UY CONDOMINIUM</h2>
-        </div>
+    </ul>
 
-        <div class="grid">
-            <!-- 1st Image -->
-            <div class="project-card">
-                <div class="project-img-wrapper">
-                    <img src="uy/condo-4-4-1.jpg" alt="INTERIOR 1">
-                </div>
+</nav>
+
+
+<!-- MAIN PROJECT SECTION -->
+
+<section class="portfolio" id="work">
+
+    <div class="section-header">
+
+        <h2>
+            RENOVATION OF AFP GYMNASIUM BLDG.
+        </h2>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <!-- 1st Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="entrepreneur/f_QSU.jpg"
+                     alt="EXTERIOR 1">
+
             </div>
 
-            <!-- Description Text Block -->
-            <div class="project-card">
-                <div class="project-text-wrapper">
-                    <p>The interior design of this studio condominium showcases a bold, highly textured Industrial Fusion style that cleverly maximizes limited square footage through a series of distinct, functional zones. The overall aesthetic balances raw urban elements with vibrant, high-contrast contemporary accents.
-Materiality and Textures:
-The space utilizes a diverse palette of tactile finishes to create depth and visual division without relying on full walls. A rustic, red-brick accent wall grounds the compact kitchen, seamlessly transitioning into a multi-textured entertainment hub featuring an integrated television mounted above a faux stone fireplace. In the sleeping quarters, the design introduces a stark contrast with a white, wavy 3D-textured accent wall, complemented by industrial wireframe pendant lights and black-and-white New York City iconography.
-Spatial Zoning and Color Theory:
-The studio's layout is meticulously organized using an open-slat partition system finished in alternating matte black and crimson red vertical stripes. This open screen divides the bedroom from the living areas, offering privacy for the bed while allowing light to filter through, and doubles as functional shelving with integrated white shadow boxes for greenery and decor. the color story is deeply intentional, utilizing a dramatic foundation of deep charcoals, warm natural wood cabinetry, and exposed brick, punctuated by strategic pops of vibrant crimson red found on the dining chairs, the living room armchair, and the room divider. This energetic accent color successfully unifies the micro-zones—sleeping, lounging, dining, and cooking—into a cohesive, dynamic, and sophisticated urban living space.</p>
-                </div>
-            </div>
-
-            <!-- 2nd Image -->
-            <div class="project-card">
-                <div class="project-img-wrapper">
-                    <img src="uy/condo-3 - -3-1.jpg" alt="INTERIOR 2">
-                </div>
-            </div>
-
-            <!-- 3rd Image -->
-            <div class="project-card">
-                <div class="project-img-wrapper">
-                    <img src="uy/condo-1 - -1.jpg" alt="INTERIOR 3">
-                </div>
-            </div>
-
-            <!-- 4th Image -->
-            <div class="project-card">
-                <div class="project-img-wrapper">
-                    <img src="uy/condo-2 - -2.jpg" alt="INTERIOR 4">
-                </div>
-            </div> 
         </div>
-    </section>
 
-    <footer>
-        <div>&copy; 2016-2026 Project Portfolio. All rights reserved.</div>
-        <div>
-            <p>Connect: <a href="mailto:ar.jefreybolhayon@gmail.com" style="color: #888; text-decoration: none;">ar.jefreybolhayon@gmail.com</a></p>
+
+        <!-- DESCRIPTION + YOUTUBE WALKTHROUGH -->
+
+        <div class="project-card">
+
+            <div class="project-text-wrapper">
+
+                <p>The architectural concept for this college classroom extension building focuses on creating an energy-efficient, forward-thinking academic environment that seamlessly merges passive climate control with modern design. The building’s most defining feature is its series of dramatic, angled concrete fins with triangular geometric perforations. Functioning as structural brise-soleil elements, these fins filter harsh direct sunlight and cast dynamic, scattered shadows across the open-air corridors, naturally cooling the building while reducing eye strain in adjacent classrooms. Warm, natural textures like the vertical wood panels and herringbone-patterned timber on the entrance pylon break the starkness of the industrial gray and white concrete framework, introducing an inviting warmth conducive to collaborative higher education.
+The building's layout and engineering specifically address its role as an educational facility optimized for student wellness and resource conservation:
+                    
+Flexible Academic Spaces: The linear, modular structure easily accommodates large, high-capacity lecture halls on the ground floor and adaptable seminar rooms on the second level, bordered by wide corridors that can double as informal student breakout areas.
+Biophilic Integration: Built-in linear planter boxes along the upper balconies integrate greenery directly into the architecture, which helps lower student stress, improves air quality, and enhances overall focus.
+Rooftop Sustainability: Capitalizing on the building's flat roof footprint, an extensive array of photovoltaic solar panels is paired with rainwater collection tanks. This not only offsets the campus's carbon emissions but serves as a functional, real-world laboratory for sustainable engineering and green management studies.</p>
+
+
+                <!-- YOUTUBE WALKTHROUGH BOX -->
+
+                <a
+                    href="https://www.youtube.com/watch?v=wR3x-SNmR8k"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="walkthrough-link"
+                    aria-label="Watch Gymnasium Walkthrough Animation on YouTube"
+                >
+
+                    <span class="play-icon">
+                        ▶
+                    </span>
+
+                    <span>
+                        Watch Walkthrough Animation
+                    </span>
+
+                </a>
+
+            </div>
+
         </div>
-    </footer>
 
-    <script>
-        // Reveal project cards on page load.
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.project-card').forEach(function (card) {
-                card.classList.add('visible');
-            });
+
+        <!-- 2nd Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="entrepreneur/F_QSU-1.jpg"
+                     alt="EXTERIOR 2">
+
+            </div>
+
+        </div>
+
+
+        <!-- 3rd Image -->
+
+        <div class="project-card">
+
+            <div class="project-img-wrapper">
+
+                <img src="entrepreneur/0005.jpg"
+                     alt="EXTERIOR 3">
+
+            </div>
+
+        </div>
+        
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        &copy; 2016-2026 Project Portfolio.
+        All rights reserved.
+    </div>
+
+    <div>
+
+        <p>
+            Connect:
+
+            <a href="mailto:ar.jefreybolhayon@gmail.com"
+               style="color: #888; text-decoration: none;">
+
+                ar.jefreybolhayon@gmail.com
+
+            </a>
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    // Reveal project cards on page load.
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        document.querySelectorAll('.project-card').forEach(function (card) {
+
+            card.classList.add('visible');
+
         });
-    </script>
+
+    });
+
+</script>
+```
+
 </body>
 </html>
