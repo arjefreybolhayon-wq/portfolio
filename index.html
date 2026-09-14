@@ -1745,34 +1745,83 @@ nav {
 
         /* =========================
            PROJECT CATEGORY FILTER
-        ========================== */
+           FIXED: reads each project's existing category text.
+        ========================= */
         const projectFilters = document.querySelectorAll('.project-filter');
         const projectCards = document.querySelectorAll('.grid .project-card');
 
-        projectFilters.forEach(filterButton => {
-            filterButton.addEventListener('click', () => {
-                projectFilters.forEach(btn => btn.classList.remove('active'));
-                filterButton.classList.add('active');
+        function getProjectCategories(card) {
+            const el = card.querySelector('.project-category');
+            const text = el ? el.textContent.toLowerCase().trim() : '';
+            const categories = [];
 
-                const filter = filterButton.dataset.filter;
+            if (text.includes('residential') || text.includes('condominium') || text.includes('house')) {
+                categories.push('residential');
+            }
+
+            if (text.includes('commercial') || text.includes('hotel')) {
+                categories.push('commercial');
+            }
+
+            if (
+                text.includes('interior') ||
+                text.includes('casino') ||
+                text.includes('lounge') ||
+                text.includes('resto')
+            ) {
+                categories.push('interior');
+            }
+
+            if (
+                text.includes('institutional') ||
+                text.includes('military') ||
+                text.includes('training facility') ||
+                text.includes('sports') ||
+                text.includes('recreation') ||
+                text.includes('thesis')
+            ) {
+                categories.push('institutional');
+            }
+
+            if (text.includes('office')) {
+                categories.push('office');
+            }
+
+            return categories;
+        }
+
+        projectFilters.forEach(filterButton => {
+            filterButton.type = 'button';
+
+            filterButton.addEventListener('click', function () {
+                const filter = this.dataset.filter;
+
+                projectFilters.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
 
                 projectCards.forEach(card => {
-                    const category = card.dataset.filterCategory || 'all';
-                    const show = filter === 'all' || category === filter;
-
-                    card.style.display = show ? '' : 'none';
+                    const categories = getProjectCategories(card);
+                    const show = filter === 'all' || categories.includes(filter);
 
                     if (show) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(14px)';
+
                         requestAnimationFrame(() => {
-                            card.classList.add('visible');
+                            card.style.transition = 'opacity .35s ease, transform .35s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
                         });
+                    } else {
+                        card.style.display = 'none';
                     }
                 });
             });
         });
 
-        /* Number visible project cards consistently */
-        document.querySelectorAll('.grid .project-card').forEach((card, index) => {
+        /* Number project cards consistently */
+        projectCards.forEach((card, index) => {
             card.dataset.index = String(index + 1).padStart(2, '0');
         });
 
