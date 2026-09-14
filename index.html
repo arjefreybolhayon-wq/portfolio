@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ar. Jefrey Bolhayon Project Portfolio</title>
+    <title>Ar. Jefrey Bolhayon | Architecture Portfolio</title>
 
     <style>
         /* =========================
@@ -597,7 +597,278 @@
                 min-height: 150px;
             }
         }
-    </style>
+    
+/* =========================
+   COMPETITIVE PORTFOLIO UPGRADE
+========================= */
+
+:root {
+    --accent: #ffffff;
+    --muted: #8b8b8b;
+    --line: rgba(255,255,255,.12);
+    --panel: #111111;
+}
+
+body {
+    background:
+        radial-gradient(circle at 80% 5%, rgba(255,255,255,.045), transparent 28%),
+        #0a0a0a;
+}
+
+/* stronger navigation */
+nav {
+    border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+/* hero refinements */
+.hero::before {
+    content: "ARCHITECTURE / DESIGN / VISUALIZATION";
+    position: absolute;
+    top: 105px;
+    left: 50px;
+    color: #555;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero-title h1 {
+    font-size: clamp(44px, 5vw, 76px);
+    letter-spacing: -3px;
+}
+
+.hero-text-content {
+    position: relative;
+}
+
+.hero-text-content::after {
+    content: "SCROLL ↓";
+    display: block;
+    margin-top: 28px;
+    color: #555;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.owner-portrait {
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+/* project section introduction */
+.portfolio {
+    position: relative;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+}
+
+.section-header h2 {
+    font-size: clamp(25px, 3vw, 42px);
+    letter-spacing: 4px;
+}
+
+/* project cards */
+.project-card {
+    border-bottom: 1px solid transparent;
+}
+
+.project-card:hover .project-title {
+    letter-spacing: 1.5px;
+}
+
+.project-title {
+    transition: letter-spacing .3s ease, color .3s ease;
+}
+
+.project-category {
+    white-space: nowrap;
+}
+
+/* add a subtle index number */
+.project-card::before {
+    content: attr(data-index);
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 5;
+    padding: 7px 9px;
+    background: rgba(0,0,0,.72);
+    border: 1px solid rgba(255,255,255,.15);
+    color: #aaa;
+    font-size: 9px;
+    letter-spacing: 2px;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* category filter */
+.project-filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: -35px 0 55px;
+}
+
+.project-filter {
+    border: 1px solid #292929;
+    background: transparent;
+    color: #777;
+    padding: 10px 15px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.project-filter:hover,
+.project-filter.active {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+/* professional project statistics */
+.portfolio-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 70px;
+}
+
+.portfolio-stat {
+    padding: 25px 20px;
+    border-right: 1px solid var(--line);
+}
+
+.portfolio-stat:last-child {
+    border-right: 0;
+}
+
+.portfolio-stat strong {
+    display: block;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.portfolio-stat span {
+    display: block;
+    margin-top: 8px;
+    color: #666;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* featured project treatment */
+.thesis-project-card .project-title {
+    font-size: 24px;
+}
+
+.thesis-project-card .project-category {
+    color: #aaa;
+}
+
+/* Skills enhancement */
+.skill-card {
+    position: relative;
+}
+
+.skill-card::after {
+    content: "↗";
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    color: #444;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.skill-card:hover::after {
+    color: #fff;
+    transform: translate(3px,-3px);
+}
+
+/* contact CTA */
+.contact-section {
+    background:
+        linear-gradient(180deg, #0a0a0a 0%, #101010 100%);
+}
+
+.contact-section .section-header h2 {
+    font-size: clamp(35px, 6vw, 70px);
+}
+
+.contact-content::before {
+    content: "AVAILABLE FOR ARCHITECTURAL DESIGN • VISUALIZATION • INTERIOR DESIGN • COLLABORATION";
+    display: block;
+    max-width: 500px;
+    color: #666;
+    font-size: 10px;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* mobile */
+@media (max-width: 968px) {
+    .hero::before {
+        left: 20px;
+        top: 90px;
+    }
+
+    .section-header {
+        display: block;
+    }
+
+    .section-header h2 {
+        margin-bottom: 25px;
+    }
+
+    .portfolio-stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .portfolio-stat:nth-child(2) {
+        border-right: 0;
+    }
+
+    .portfolio-stat:nth-child(3),
+    .portfolio-stat:nth-child(4) {
+        border-top: 1px solid var(--line);
+    }
+}
+
+@media (max-width: 520px) {
+    .hero::before {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .portfolio-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .portfolio-stat strong {
+        font-size: 24px;
+    }
+
+    .project-filter-bar {
+        margin-top: -10px;
+        margin-bottom: 35px;
+    }
+}
+
+</style>
 </head>
 <body>
 
@@ -662,14 +933,14 @@
     <!-- =========================
          WORK / ARCHITECTURAL THESIS 
     ========================== -->
-    <section class="portfolio" id="work">
+    <section class="portfolio cad-section" id="cad-works">
         <div class="section-header">
             <h2>2017 ARCHITECTURAL THESIS</h2>
         </div>
 
         <div class="thesis-grid">
             <!-- ARCHITECTURAL THESIS -->
-            <div class="project-card thesis-project-card" id="architectural thesis-thesis" data-project="architectural thesis">
+            <div class="project-card thesis-project-card" id="architectural thesis-thesis" data-project="architectural thesis" data-index="01" data-filter-category="all">
                 <div class="project-img-wrapper">
                     <a href="thesis.html" class="project-link">
                         <img src="architectural thesis/LB_01.jpg" alt="architectural thesis">
@@ -686,10 +957,26 @@
     <!-- =========================
          WORK / SELECTED PROJECTS
     ========================== -->
-    <section class="portfolio" id="work">
+    <section class="portfolio cad-section" id="cad-works-2">
         <div class="section-header">
             <h2>Selected Projects</h2>
         </div>
+        <div class="portfolio-stats">
+            <div class="portfolio-stat"><strong>30+</strong><span>Projects</span></div>
+            <div class="portfolio-stat"><strong>10+</strong><span>Years Experience</span></div>
+            <div class="portfolio-stat"><strong>04</strong><span>Design Fields</span></div>
+            <div class="portfolio-stat"><strong>01</strong><span>Integrated Practice</span></div>
+        </div>
+
+        <div class="project-filter-bar" aria-label="Project filters">
+            <button class="project-filter active" data-filter="all">All Projects</button>
+            <button class="project-filter" data-filter="residential">Residential</button>
+            <button class="project-filter" data-filter="commercial">Commercial</button>
+            <button class="project-filter" data-filter="interior">Interior</button>
+            <button class="project-filter" data-filter="institutional">Institutional</button>
+            <button class="project-filter" data-filter="office">Office</button>
+        </div>
+
 
         <div class="grid">
             <!-- GUINOLBAY -->
@@ -1139,7 +1426,7 @@
     <!-- =========================
          WORK / CAD 2D WORKS
     ========================== -->
-    <section class="portfolio" id="work">
+    <section class="portfolio" id="cad-works">
         <div class="section-header">
             <h2>SELECTED SAMPLE CAD 2D WORKS</h2>
         </div>
@@ -1455,6 +1742,40 @@
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'auto';
         }
+
+        /* =========================
+           PROJECT CATEGORY FILTER
+        ========================== */
+        const projectFilters = document.querySelectorAll('.project-filter');
+        const projectCards = document.querySelectorAll('.grid .project-card');
+
+        projectFilters.forEach(filterButton => {
+            filterButton.addEventListener('click', () => {
+                projectFilters.forEach(btn => btn.classList.remove('active'));
+                filterButton.classList.add('active');
+
+                const filter = filterButton.dataset.filter;
+
+                projectCards.forEach(card => {
+                    const category = card.dataset.filterCategory || 'all';
+                    const show = filter === 'all' || category === filter;
+
+                    card.style.display = show ? '' : 'none';
+
+                    if (show) {
+                        requestAnimationFrame(() => {
+                            card.classList.add('visible');
+                        });
+                    }
+                });
+            });
+        });
+
+        /* Number visible project cards consistently */
+        document.querySelectorAll('.grid .project-card').forEach((card, index) => {
+            card.dataset.index = String(index + 1).padStart(2, '0');
+        });
+
     </script>
 </body>
 </html>
