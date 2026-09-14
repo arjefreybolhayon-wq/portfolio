@@ -1013,6 +1013,86 @@ footer a{
     }
 }
 </style>
+
+<style id="selected-projects-and-technical-fix">
+/* =========================
+   SELECTED PROJECTS — FILTER FIX
+   ========================= */
+#selected-grid .project-card{
+  display:block;
+}
+#selected-grid .project-card.filter-hidden{
+  display:none !important;
+}
+#selected-grid .project-card.filter-match{
+  display:block !important;
+}
+#selected-grid .archive-extra{
+  display:none;
+}
+#selected-grid .archive-extra.archive-open{
+  display:block;
+}
+#selected-grid .archive-extra.filter-hidden{
+  display:none !important;
+}
+
+/* Make filter controls unmistakably interactive */
+.project-filter{
+  cursor:pointer;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.project-filter:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:3px;
+}
+
+/* =========================
+   PLANS & TECHNICAL WORK — IMAGE FIT
+   Technical drawings should show the FULL sheet,
+   not be cropped like architectural perspectives.
+   ========================= */
+#technical-work .grid{
+  align-items:start;
+}
+#technical-work .project-card{
+  overflow:hidden;
+}
+#technical-work .project-img-wrapper{
+  height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#151515;
+  overflow:hidden;
+}
+#technical-work .project-img-wrapper img{
+  width:100%;
+  height:100%;
+  object-fit:contain !important;
+  object-position:center center;
+  background:#151515;
+  filter:none !important;
+  transform:none !important;
+  padding:10px;
+}
+#technical-work .project-card:hover .project-img-wrapper img{
+  transform:scale(1.015) !important;
+  filter:none !important;
+}
+#technical-work .project-info{
+  padding-bottom:8px;
+}
+@media(max-width:968px){
+  #technical-work .project-img-wrapper{height:430px}
+}
+@media(max-width:520px){
+  #technical-work .project-img-wrapper{height:320px}
+  #technical-work .project-img-wrapper img{padding:6px}
+}
+</style>
+
 </head>
 <body>
 <!-- =========================
@@ -1843,111 +1923,101 @@ footer a{
 
         /* =========================
            PROJECT CATEGORY FILTER
-           FIXED: reads each project's existing category text.
+           ROBUST VERSION:
+           - filters ALL selected projects, including archived cards
+           - automatically opens the archive when a filter needs it
+           - preserves the View All state
         ========================= */
         const projectFilters = document.querySelectorAll('.project-filter');
-        const projectCards = document.querySelectorAll('#selected-grid .project-card');
+        const projectCards = Array.from(document.querySelectorAll('#selected-grid .project-card'));
+        const archiveCards = Array.from(document.querySelectorAll('#selected-grid .archive-extra'));
+        const viewAllButton = document.getElementById('view-all-projects');
 
         function getProjectCategories(card) {
-            const el = card.querySelector('.project-category');
-            const text = el ? el.textContent.toLowerCase().trim() : '';
-            const categories = [];
+            const text = (card.querySelector('.project-category')?.textContent || '').toLowerCase();
+            const categories = new Set();
 
-            if (text.includes('residential') || text.includes('condominium') || text.includes('house')) {
-                categories.push('residential');
-            }
-
-            if (text.includes('commercial') || text.includes('hotel')) {
-                categories.push('commercial');
-            }
-
-            if (
-                text.includes('interior') ||
-                text.includes('casino') ||
-                text.includes('lounge') ||
-                text.includes('resto')
-            ) {
-                categories.push('interior');
-            }
-
-            if (
-                text.includes('institutional') ||
-                text.includes('military') ||
-                text.includes('training facility') ||
-                text.includes('sports') ||
-                text.includes('recreation') ||
-                text.includes('thesis')
-            ) {
-                categories.push('institutional');
-            }
-
-            if (text.includes('office')) {
-                categories.push('office');
-            }
+            if (/residential|condominium|house/.test(text)) categories.add('residential');
+            if (/commercial|hotel/.test(text)) categories.add('commercial');
+            if (/interior|casino|lounge|resto|clinic/.test(text)) categories.add('interior');
+            if (/institutional|military|training facility|sports|recreation|thesis/.test(text)) categories.add('institutional');
+            if (/office/.test(text)) categories.add('office');
 
             return categories;
         }
 
-        projectFilters.forEach(filterButton => {
-            filterButton.type = 'button';
+        function showArchive(open) {
+            archiveCards.forEach(card => {
+                card.classList.toggle('archive-open', open);
+            });
 
-            filterButton.addEventListener('click', function () {
-                const filter = this.dataset.filter;
+            if (viewAllButton) {
+                viewAllButton.setAttribute('aria-expanded', String(open));
+                viewAllButton.textContent = open ? 'Show Selected Projects' : 'View All Projects';
+            }
+        }
 
+        function applyProjectFilter(filter) {
+            const isAll = filter === 'all';
+
+            /* If filtering, reveal the archive so every matching project can be seen. */
+            if (!isAll) showArchive(true);
+
+            projectCards.forEach(card => {
+                const matches = isAll || getProjectCategories(card).has(filter);
+
+                card.classList.toggle('filter-hidden', !matches);
+                card.classList.toggle('filter-match', matches);
+
+                if (matches && !isAll) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+
+            /* With All Projects, return to the curated first 8. */
+            if (isAll) {
+                archiveCards.forEach(card => {
+                    card.classList.remove('filter-hidden');
+                });
+                showArchive(false);
+            }
+        }
+
+        projectFilters.forEach(button => {
+            button.type = 'button';
+
+            button.addEventListener('click', function () {
                 projectFilters.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
-
-                projectCards.forEach(card => {
-                    const categories = getProjectCategories(card);
-                    const show = filter === 'all' || categories.includes(filter);
-
-                    if (show) {
-                        card.style.display = '';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(14px)';
-
-                        requestAnimationFrame(() => {
-                            card.style.transition = 'opacity .35s ease, transform .35s ease';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        });
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                applyProjectFilter(this.dataset.filter || 'all');
             });
         });
-
-        /* Number project cards consistently */
-        projectCards.forEach((card, index) => {
-            card.dataset.index = String(index + 1).padStart(2, '0');
-        });
-
-        /* =========================
-           SELECTED PROJECT ARCHIVE
-        ========================= */
-        const viewAllButton = document.getElementById('view-all-projects');
-        const archiveCards = document.querySelectorAll('#selected-grid .archive-extra');
 
         if (viewAllButton) {
             viewAllButton.addEventListener('click', function () {
                 const expanded = this.getAttribute('aria-expanded') === 'true';
-                archiveCards.forEach(card => {
-                    card.style.display = expanded ? 'none' : '';
-                    if (!expanded) {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(14px)';
-                        requestAnimationFrame(() => {
-                            card.style.transition = 'opacity .4s ease, transform .4s ease';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        });
-                    }
+                showArchive(!expanded);
+
+                /* Reset filters when manually switching archive view. */
+                projectFilters.forEach(btn => btn.classList.remove('active'));
+                const allButton = document.querySelector('.project-filter[data-filter="all"]');
+                if (allButton) allButton.classList.add('active');
+
+                projectCards.forEach(card => {
+                    card.classList.remove('filter-hidden');
+                    card.classList.add('filter-match');
                 });
-                this.setAttribute('aria-expanded', String(!expanded));
-                this.textContent = expanded ? 'View All Projects' : 'Show Selected Projects';
             });
         }
+
+        /* Number selected-project cards consistently. */
+        projectCards.forEach((card, index) => {
+            card.dataset.index = String(index + 1).padStart(2, '0');
+        });
+
+        /* Initial state */
+        applyProjectFilter('all');
 
     </script>
 </body>
