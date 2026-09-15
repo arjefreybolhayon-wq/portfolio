@@ -2147,5 +2147,59 @@ document.addEventListener('DOMContentLoaded',function(){
  }
 });
 </script>
+
+<script>
+/* Reliable hover effect for Featured Project + CAD 2D Works */
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll("#featured-work .project-img-wrapper img, #cad-works .project-img-wrapper img");
+    images.forEach(function (img) {
+        img.addEventListener("mouseenter", function () {
+            img.style.setProperty("filter", "grayscale(0%) saturate(100%)", "important");
+            img.style.setProperty("-webkit-filter", "grayscale(0%) saturate(100%)", "important");
+            img.style.setProperty("transform", "scale(1.045)", "important");
+        });
+        img.addEventListener("mouseleave", function () {
+            img.style.setProperty("filter", "grayscale(100%) saturate(0%)", "important");
+            img.style.setProperty("-webkit-filter", "grayscale(100%) saturate(0%)", "important");
+            img.style.setProperty("transform", "scale(1)", "important");
+        });
+    });
+});
+</script>
 </body>
-</html>
+</html/* =========================================================
+   FEATURED + CAD 2D — BLACK & WHITE TO COLOR ON HOVER
+   ========================================================= */
+#featured-work .project-img-wrapper img,
+#cad-works .project-img-wrapper img {
+    filter: grayscale(100%) saturate(0%) !important;
+    -webkit-filter: grayscale(100%) saturate(0%) !important;
+    transition: filter 0.65s ease, -webkit-filter 0.65s ease, transform 0.65s ease !important;
+    transform: scale(1) !important;
+    will-change: filter, transform;
+}
+
+#featured-work .project-card:hover .project-img-wrapper img,
+#featured-work .project-card:focus-within .project-img-wrapper img,
+#cad-works .project-card:hover .project-img-wrapper img,
+#cad-works .project-card:focus-within .project-img-wrapper img,
+#featured-work .project-img-wrapper:hover img,
+#cad-works .project-img-wrapper:hover img {
+    filter: grayscale(0%) saturate(100%) !important;
+    -webkit-filter: grayscale(0%) saturate(100%) !important;
+    transform: scale(1.045) !important;
+}
+
+#featured-work .project-img-wrapper,
+#cad-works .project-img-wrapper {
+    overflow: hidden;
+}
+
+@media (hover: none) {
+    #featured-work .project-img-wrapper img,
+    #cad-works .project-img-wrapper img {
+        filter: grayscale(0%) saturate(100%) !important;
+        -webkit-filter: grayscale(0%) saturate(100%) !important;
+    }
+}
+>
