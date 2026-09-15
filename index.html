@@ -921,6 +921,172 @@ footer{border-top:1px solid var(--line)}
  #work .project-img-wrapper{height:300px}
 }
 </style>
+
+<style id="idea-to-reality-style">
+/* =========================
+   FROM IDEA TO REALITY
+========================= */
+.process-section{
+    position:relative;
+    border-top:1px solid var(--line, rgba(255,255,255,.13));
+    background:
+        linear-gradient(180deg, #0a0a0a 0%, #0e0e0e 100%);
+}
+
+.process-intro{
+    max-width:760px;
+    color:#999;
+    font-size:14px;
+    line-height:1.85;
+    margin:-10px 0 55px;
+}
+
+.process-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.process-card{
+    position:relative;
+    min-height:390px;
+    padding:32px 28px 30px;
+    background:#0f0f0f;
+    overflow:hidden;
+    transition:transform .35s ease, background .35s ease;
+}
+
+.process-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:1px;
+    background:#fff;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .45s ease;
+}
+
+.process-card:hover{
+    background:#151515;
+    transform:translateY(-5px);
+    z-index:2;
+}
+
+.process-card:hover::before{
+    transform:scaleX(1);
+}
+
+.process-number{
+    font-size:10px;
+    letter-spacing:2px;
+    color:#666;
+    margin-bottom:55px;
+}
+
+.process-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+}
+
+.process-label{
+    font-size:10px;
+    letter-spacing:2px;
+    color:#888;
+}
+
+.process-arrow{
+    color:#555;
+    font-size:18px;
+    transition:transform .3s ease,color .3s ease;
+}
+
+.process-card:hover .process-arrow{
+    color:#fff;
+    transform:translate(3px,-3px);
+}
+
+.process-card h3{
+    font-size:21px;
+    line-height:1.15;
+    font-weight:500;
+    letter-spacing:.5px;
+    margin-bottom:18px;
+}
+
+.process-card p{
+    color:#8f8f8f;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:28px;
+}
+
+.process-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:auto;
+}
+
+.process-tags span{
+    border:1px solid rgba(255,255,255,.12);
+    padding:7px 9px;
+    color:#777;
+    font-size:8px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+}
+
+.process-flow{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-top:42px;
+    color:#666;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.process-flow i{
+    display:block;
+    height:1px;
+    flex:1;
+    background:rgba(255,255,255,.14);
+}
+
+@media(max-width:968px){
+    .process-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:520px){
+    .process-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process-card{
+        min-height:330px;
+    }
+
+    .process-flow{
+        flex-wrap:wrap;
+        gap:10px;
+    }
+
+    .process-flow i{
+        flex:0 0 30px;
+    }
+}
+</style>
+
 </head>
 <body>
 <!-- =========================
@@ -934,6 +1100,7 @@ footer{border-top:1px solid var(--line)}
 <li><a class="nav-link active" href="#about">About</a></li>
 <li><a class="nav-link" href="#featured-work">Featured</a></li>
 <li><a class="nav-link" href="#turnover-projects">Built Work</a></li>
+<li><a class="nav-link" href="#idea-to-reality">Process</a></li>
 <li><a class="nav-link" href="#skills">Skills</a></li>
 <li><a class="nav-link" href="#contact">Contact</a></li>
 </ul>
@@ -1562,6 +1729,112 @@ footer{border-top:1px solid var(--line)}
 </div>
 </div>
 </section>
+
+<!-- =========================
+         FROM IDEA TO REALITY / PROCESS
+    ========================== -->
+<section class="portfolio process-section" id="idea-to-reality">
+<div class="section-header">
+<h2>FROM IDEA TO REALITY</h2>
+</div>
+<p class="process-intro">
+    A structured architectural workflow connecting concept development, technical documentation,
+    visualization, and project delivery—from the first design idea to a completed and coordinated build.
+</p>
+
+<div class="process-grid">
+
+<!-- 01 / CONCEPT -->
+<article class="process-card">
+    <div class="process-number">01</div>
+    <div class="process-card-top">
+        <span class="process-label">CONCEPT</span>
+        <span class="process-arrow">↗</span>
+    </div>
+    <h3>IDEA &amp; DIRECTION</h3>
+    <p>
+        Establishing the project's design vision through site understanding, client requirements,
+        space planning, architectural character, and initial concept development.
+    </p>
+    <div class="process-tags">
+        <span>Site Analysis</span>
+        <span>Space Planning</span>
+        <span>Concept Design</span>
+    </div>
+</article>
+
+<!-- 02 / DEVELOP -->
+<article class="process-card">
+    <div class="process-number">02</div>
+    <div class="process-card-top">
+        <span class="process-label">DEVELOP</span>
+        <span class="process-arrow">↗</span>
+    </div>
+    <h3>DESIGN DEVELOPMENT</h3>
+    <p>
+        Translating the concept into coordinated architectural solutions through plans, elevations,
+        sections, material studies, detailed design, and technical coordination.
+    </p>
+    <div class="process-tags">
+        <span>CAD Documentation</span>
+        <span>Detailing</span>
+        <span>Coordination</span>
+    </div>
+</article>
+
+<!-- 03 / VISUALIZE -->
+<article class="process-card">
+    <div class="process-number">03</div>
+    <div class="process-card-top">
+        <span class="process-label">VISUALIZE</span>
+        <span class="process-arrow">↗</span>
+    </div>
+    <h3>VISUAL COMMUNICATION</h3>
+    <p>
+        Communicating the developed design through realistic 3D models, architectural renders,
+        interior visualization, presentation graphics, and walkthrough animation.
+    </p>
+    <div class="process-tags">
+        <span>3D Modeling</span>
+        <span>Rendering</span>
+        <span>Walkthrough</span>
+    </div>
+</article>
+
+<!-- 04 / DELIVER -->
+<article class="process-card">
+    <div class="process-number">04</div>
+    <div class="process-card-top">
+        <span class="process-label">DELIVER</span>
+        <span class="process-arrow">↗</span>
+    </div>
+    <h3>CONSTRUCTION &amp; TURNOVER</h3>
+    <p>
+        Supporting the transition from drawings to built work through construction documentation,
+        site coordination, design implementation, quality review, completion, and project turnover.
+    </p>
+    <div class="process-tags">
+        <span>Site Coordination</span>
+        <span>Construction</span>
+        <span>Turnover</span>
+    </div>
+</article>
+
+</div>
+
+<div class="process-flow">
+    <span>IDEA</span>
+    <i></i>
+    <span>DESIGN</span>
+    <i></i>
+    <span>DOCUMENTATION</span>
+    <i></i>
+    <span>VISUALIZATION</span>
+    <i></i>
+    <span>BUILT</span>
+</div>
+</section>
+
 <!-- =========================
          SKILLS
     ========================== -->
